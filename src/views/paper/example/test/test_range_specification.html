@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>test_equal</title>
+		<style type="text/css">
+			html,body{
+				margin: 0;
+				padding: 0;
+				border: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.editor{
+				margin: 0;
+				padding: 0 50px 100px 50px;
+				border: 0;
+				width: 100%;
+				height: 20%;
+				outline: none;
+			}
+		</style>
+		<script type="text/javascript" src="../../src/thirdparty/tex-svg.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../src/editor.css" />
+	</head>
+	<body>
+		<div class="editor" contenteditable="true">
+			<b><i>iiiiiii</i>111111<i>aaaaa</i><a href="/#">222222</a></b><i>333333</i>
+		</div>
+		<div class="editor" contenteditable="true">
+			<b><i>iiiiiii</i><img src="./aaa" />111111<i>aaaaa</i><a href="/#">222222</a></b><i>33<img src="./aaa" />3333</i>
+		</div>
+	</body>
+	<script type="module">
+		// import Editor from '../../src/editor.js';
+		// let 
+		// 	editor = new Editor(document.getElementsByClassName('editor')[0])
+		// 		.loadJson('../paper/Simple and Efficient Bilayer Cross Counting/english.json');
+
+		document.addEventListener('selectionchange', ()=>{
+			let selection = document.getSelection(),
+					range;
+			if( selection.type !== 'None' ){
+				range =  selection.getRangeAt(0);
+				checkRange(range);
+				console.log('collapsed:', range.collapsed);
+				console.log('startContainer:', range.startContainer);
+				console.log('startOffset:', range.startOffset);
+				if( !range.collapsed ){
+					console.log('endContainer:', range.endContainer);
+					console.log('endOffset:', range.endOffset);
+				}
+			}
+		});
+		function checkRange(range){
+			let { collapsed, startContainer, startOffset, endContainer, endOffset } = range;
+
+			if( startContainer.nodeType === Node.ELEMENT_NODE ){
+				// console.log('是元素');
+				let node = startContainer.childNodes[startOffset > 0 ? startOffset - 1 : 0];
+				// console.log('node:', node);
+				// console.log('node.childNodes.length:', node.childNodes.length);
+				if( node && node.childNodes.length > 0 ){
+					console.error('startContainer range 的位置不符合预期, 检查是否是浏览器自动的选择导致的, 如是, 需要优化完善代码');
+				}
+			}
+			if( !collapsed && endContainer.nodeType === Node.ELEMENT_NODE ){
+				let node = endContainer.childNodes[endOffset > 0 ? endOffset - 1 : 0];
+				if( node && node.childNodes.length > 0 ){
+					console.error('endContainer range 的位置不符合预期, 检查是否是浏览器自动的选择导致的, 如是, 需要优化完善代码');
+				}
+			}
+		}
+	</script>
+</html>

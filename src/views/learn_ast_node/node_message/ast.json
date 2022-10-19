@@ -1,0 +1,520 @@
+{
+	"File": {
+		"type": true,
+		"program": true,
+		"comments": true
+	},
+	"Program": {
+		"type": true,
+		"sourceType": true,
+		"body": true,
+		"interpreter": true,
+		"directives": true
+	},
+	"PrivateName": {
+		"type": true,
+		"id": true
+	},
+	"FunctionDeclaration": {
+		"type": true,
+	  "id": true,
+	  "params": true,
+	  "body": true,
+	  "generator": true,
+	  "async": true
+	},
+	"VariableDeclaration": {
+		"type": true,
+		"declarations": true,
+		"kind": true
+	},
+	"VariableDeclarator": {
+		"type": true,
+		"id": true,
+		"init": true
+	},
+	"Identifier": {
+		"type": true,
+		"name": true
+	},
+	"RegExpLiteral": {
+		"type": true,
+	  "pattern": true,
+	  "flags": true
+	},
+	"NullLiteral": {
+		"type": true
+	},
+	"StringLiteral": {
+		"type": true,
+		"value": true
+	},
+	"BooleanLiteral": {
+		"type": true,
+		"value": true
+	},
+	"NumericLiteral": {
+		"type": true,
+		"value": true
+	},
+	"BigIntLiteral": {
+		"type": true,
+		"value": true
+	},
+	"DecimalLiteral": {
+		"type": true,
+		"value": true
+	},
+	"ExpressionStatement": {
+		"type": true,
+		"expression": true
+	},
+	"BlockStatement": {
+		"body": true,
+		"directives": true
+	},
+	"EmptyStatement": {
+		"type": true
+	},
+	"DebuggerStatement": {
+		"type": true
+	},
+	"WithStatement": {
+		"type": true,
+		"object": true,
+	  "body": true
+	},
+	"ReturnStatement": {
+		"type": true,
+		"argument": true
+	},
+	"LabeledStatement": {
+		"type": true,
+		"label": true,
+		"body": true
+	},
+	"BreakStatement": {
+		"type": true,
+		"label": true
+	},
+	"ContinueStatement": {
+		"type": true,
+		"label": true
+	},
+	"IfStatement": {
+		"type": true,
+	  "test": true,
+	  "consequent": true,
+	  "alternate": true
+	},
+	"SwitchStatement": {
+		"type": true,
+		"discriminant": true,
+	  "cases": true
+	},
+	"SwitchCase": {
+		"type": true,
+		"test": true,
+	  "consequent": true
+	},
+	"ThrowStatement": {
+		"type": true,
+		"argument": true
+	},
+	"TryStatement": {
+		"type": true,
+		"block": true,
+		"handler": true,
+		"finalizer": true
+	},
+	"CatchClause": {
+		"type": true,
+		"param": true,
+		"body": true
+	},
+	"WhileStatement": {
+		"type": true,
+		"test": true,
+		"body": true
+	},
+	"DoWhileStatement": {
+		"type": true,
+		"test": true,
+		"body": true
+	},
+	"ForStatement": {
+		"type": true,
+	  "init": true,
+	  "test": true,
+	  "update": true,
+	  "body": true
+	},
+	"ForInStatement": {
+		"type": true,
+		"left": true,
+		"right": true,
+		"body": true
+	},
+	"ForOfStatement": {
+		"type": true,
+		"left": true,
+		"right": true,
+		"body": true,
+		"await": true
+	},
+	"Decorator": {
+		"type": true,
+		"expression": true
+	},
+	"Directive": {
+		"type": true,
+		"value": true
+	},
+	"DirectiveLiteral": {
+		"type": true,
+		"value": true
+	},
+	"InterpreterDirective": {
+		"type": true,
+		"value": true
+	},
+	"Super": {
+		"type": true
+	},
+	"Import": {
+		"type": true
+	},
+	"ThisExpression": {
+		"type": true
+	},
+	"ArrowFunctionExpression": {
+		"type": true,
+	  "id": true,
+	  "params": true,
+	  "body": true,
+	  "generator": true,
+	  "async": true
+	},
+	"YieldExpression": {
+		"type": true,
+		"argument": true,
+		"delegate": true
+	},
+	"AwaitExpression": {
+		"type": true,
+		"argument": true
+	},
+	"ArrayExpression": {
+		"type": true,
+		"elements": true
+	},
+	"ObjectExpression": {
+		"type": true,
+		"properties": true
+	},
+	"ObjectProperty": {
+		"type": true,
+		"key": true,
+		"method": true,
+		"computed": true,
+		"shorthand": true,
+		"value": true
+	},
+	"ObjectMethod": {
+		"type": true,
+		"key": true,
+		"method": true,
+		"computed": true,
+		"kind": true,
+	  "id": true,
+	  "params": true,
+	  "body": true,
+	  "generator": true,
+	  "async": true
+	},
+	"RecordExpression": {
+		"type": true,
+		"properties": true
+	},
+	"TupleExpression": {
+		"type": true,
+		"elements": true
+	},
+	"FunctionExpression": {
+		"type": true,
+	  "id": true,
+	  "params": true,
+	  "body": true,
+	  "generator": true,
+	  "async": true
+	},
+	"UnaryExpression": {
+		"type": true,
+		"operator": true,
+		"prefix": true,
+		"argument": true
+	},
+	"UpdateExpression": {
+		"type": true,
+	  "operator": true,
+	  "argument": true,
+	  "prefix": true
+	},
+	"BinaryExpression": {
+		"type": true,
+		"operator": true,
+		"left":  true,
+		"right": true
+	},
+	"AssignmentExpression": {
+		"type": true,
+		"operator": true,
+	  "left": true,
+	  "right": true
+	},
+	"LogicalExpression": {
+	  "type": true,
+	  "operator": true,
+	  "left": true,
+	  "right": true
+	},
+	"SpreadElement": {
+		"type": true,
+		"argument": true
+	},
+	"ArgumentPlaceholder": {
+		"type": true
+	},
+	"MemberExpression": {
+		"type": true,
+	  "object": true,
+	  "property": true,
+	  "computed": true
+	},
+	"OptionalMemberExpression": {
+		"type": true,
+	  "object": true,
+	  "property": true,
+	  "computed": true,
+	  "optional": true
+	},
+	"BindExpression": {
+		"type": true,
+		"object": true,
+		"callee": true
+	},
+	"ConditionalExpression": {
+	  "type": true,
+	  "test": true,
+	  "alternate": true,
+	  "consequent": true
+	},
+	"CallExpression": {
+	  "type": true,
+	  "callee": true,
+	  "arguments": true
+	},
+	"OptionalCallExpression": {
+		"type": true,
+	  "callee": true,
+	  "arguments": true,
+	  "optional": true
+	},
+	"NewExpression": {
+	  "type": true,
+	  "callee": true,
+	  "arguments": true
+	},
+	"SequenceExpression": {
+		"type": true,
+		"expressions": true
+	},
+	"ParenthesizedExpression": {
+		"type": true,
+		"expression": true
+	},
+	"DoExpression": {
+		"type": true,
+		"body": true,
+	  "async": true
+	},
+	"ModuleExpression": {
+		"type": true,
+	  "body": true
+	},
+	"TemplateLiteral": {
+		"type": true,
+	  "quasis": true,
+	  "expressions": true
+	},
+	"TaggedTemplateExpression": {
+	  "type": true,
+	  "tag": true,
+	  "quasi": true
+	},
+	"TemplateElement": {
+	  "type": true,
+	  "tail": true,
+	  "value": true
+	},
+	"ObjectPattern": {
+		"type": true,
+		"properties": true
+	},
+	"ArrayPattern": {
+		"type": true,
+		"elements": true
+	},
+	"RestElement": {
+		"type": true,
+	  "argument": true
+	},
+	"AssignmentPattern": {
+		"type": true,
+	  "left": true,
+	  "right": true
+	},
+	"ClassBody": {
+		"type": true,
+		"body": true
+	},
+	"ClassMethod": {
+		"type": true,
+	  "id": true,
+	  "params": true,
+	  "body": true,
+	  "generator": true,
+	  "async": true,
+	  "key": true,
+	  "kind": true,
+	  "computed": true,
+	  "static": true,
+	  "decorators":  true
+	},
+	"ClassPrivateMethod": {
+		"type": true,
+	  "id": true,
+	  "params": true,
+	  "body": true,
+	  "generator": true,
+	  "async": true,
+	  "key": true,
+	  "kind": true,
+	  "computed": true,
+	  "static": true,
+	  "decorators":  true
+	},
+	"ClassProperty": {
+		"type": true,
+	  "key": true,
+	  "value": true,
+	  "static": true,
+	  "computed": true,
+	  "variance": true
+	},
+	"ClassPrivateProperty": {
+	  "type": true,
+	  "key": true,
+	  "value": true,
+	  "static": true,
+	  "variance": true
+	},
+	"StaticBlock": {
+		"type": true,
+		"body": true
+	},
+	"ClassDeclaration": {
+		"type": true,
+		"id": true,
+		"body": true,
+		"superClass": true
+	},
+	"ClassExpression": {
+		"type": true,
+		"body": true,
+		"superClass": true,
+		"id": true
+	},
+	"MetaProperty": {
+		"type": true,
+		"meta": true,
+		"property": true
+	},
+	"ImportDeclaration": {
+		"type": true,
+		"importKind": true,
+		"specifiers": true,
+		"source": true,
+		"assertions": true
+	},
+	"ImportSpecifier": {
+		"type": true,
+		"local": true,
+		"importKind": true,
+		"imported": true
+	},
+	"ImportDefaultSpecifier": {
+		"type": true,
+		"local": true
+	},
+	"ImportNamespaceSpecifier": {
+		"type": true,
+		"local": true
+	},
+	"ImportAttribute": {
+	  "type": true,
+	  "key": true,
+	  "value": true
+	},
+	"ExportNamedDeclaration": {
+		"type": true,
+	  "declaration": true,
+	  "specifiers": true,
+	  "source": true,
+	  "assertions": true,
+		"importKind": true
+	},
+	"ExportSpecifier": {
+		"type": true,
+		"exported": true,
+		"local": true
+	},
+	"ExportNamespaceSpecifier": {
+		"type": true,
+		"exported": true
+	},
+	"ExportDefaultDeclaration": {
+		"type": true,
+		"declaration": true
+	},
+	"ExportAllDeclaration": {
+		"type": true,
+	  "source": true,
+	  "assertions": true,
+	  "exportKind": true
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

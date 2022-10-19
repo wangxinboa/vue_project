@@ -1,0 +1,820 @@
+{
+    "astTree": {
+        "children": [
+            {
+                "nodeType": "File",
+                "children": [],
+                "code": "",
+                "selected": false,
+                "edit": false
+            },
+            {
+                "nodeType": "Program",
+                "children": [],
+                "code": "\"use strict\"",
+                "selected": false,
+                "edit": true
+            },
+            {
+                "nodeType": "PrivateName",
+                "children": [],
+                "code": "class A extends B{\n    #a(){\n    }\n}",
+                "selected": false,
+                "edit": true
+            },
+            {
+                "nodeType": "Identifier",
+                "children": [],
+                "code": "let Identifier;",
+                "selected": false,
+                "edit": true
+            },
+            {
+                "nodeType": "Declarations",
+                "children": [
+                    {
+                        "nodeType": "FunctionDeclaration",
+                        "children": [],
+                        "code": "async function* a(b, c = 1){\n    return b + c;\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "VariableDeclaration",
+                        "children": [
+                            {
+                                "nodeType": "VariableDeclarator",
+                                "children": [],
+                                "code": "let a",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "let a",
+                        "selected": false,
+                        "edit": true
+                    }
+                ],
+                "code": "let a;",
+                "selected": false,
+                "edit": true
+            },
+            {
+                "nodeType": "Literals",
+                "children": [
+                    {
+                        "nodeType": "RegExpLiteral",
+                        "children": [],
+                        "code": "let RegExpLiteral = /runoob/i",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "NullLiteral",
+                        "children": [],
+                        "code": "let NullLiteral = null",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "StringLiteral",
+                        "children": [],
+                        "code": "let StringLiteral = \"string_literal\"",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "BooleanLiteral",
+                        "children": [],
+                        "code": "let BooleanLiteral = true;",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "NumericLiteral",
+                        "children": [],
+                        "code": "let NumericLiteral = 12;",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "BigIntLiteral",
+                        "children": [],
+                        "code": "let BigIntLiteral = 12345678901234566789012345667890n",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "DecimalLiteral",
+                        "children": [],
+                        "code": "let DecimalLiteral = 111.111m",
+                        "selected": false,
+                        "edit": true
+                    }
+                ],
+                "code": "",
+                "selected": false,
+                "edit": true
+            },
+            {
+                "nodeType": "Statements",
+                "children": [
+                    {
+                        "nodeType": "ExpressionStatement",
+                        "children": [],
+                        "code": "null",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "BlockStatement",
+                        "children": [],
+                        "code": "{\n    \n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "EmptyStatement",
+                        "children": [],
+                        "code": ";",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "DebuggerStatement",
+                        "children": [],
+                        "code": "debugger;",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "WithStatement",
+                        "children": [],
+                        "code": "with(location) {\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "Control flow",
+                        "children": [
+                            {
+                                "nodeType": "ReturnStatement",
+                                "children": [],
+                                "code": "function ReturnStatement(){\n    return 1;\n}",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "LabeledStatement",
+                                "children": [],
+                                "code": "start: console.log('start');",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "BreakStatement",
+                                "children": [],
+                                "code": "outermost:\nfor (let i = 0; i < 10; i++) {\n    break outermost;\n}",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ContinueStatement",
+                                "children": [],
+                                "code": "outermost:\nfor (let i = 0; i < 10; i++) {\n    continue outermost;\n}",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "",
+                        "selected": false,
+                        "edit": false
+                    },
+                    {
+                        "nodeType": "Choice",
+                        "children": [
+                            {
+                                "nodeType": "IfStatement",
+                                "children": [],
+                                "code": "if(a){\n}else if(b){\n}else{\n}",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "SwitchStatement",
+                                "children": [
+                                    {
+                                        "nodeType": "SwitchCase",
+                                        "children": [],
+                                        "code": "switch (test) {\n  case 'number':\n    console.log(0);\n  case 'string':\n    console.log('string bar');\n  default:\n    console.log('default bar');\n}",
+                                        "selected": false,
+                                        "edit": true
+                                    }
+                                ],
+                                "code": "switch (test) {\n  case 'number':\n    console.log(0);\n  case 'string':\n    console.log('string bar');\n  default:\n    console.log('default bar');\n}",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "",
+                        "selected": false,
+                        "edit": false
+                    },
+                    {
+                        "nodeType": "Exceptions",
+                        "children": [
+                            {
+                                "nodeType": "ThrowStatement",
+                                "children": [],
+                                "code": "throw new Error('err');",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "TryStatement",
+                                "children": [
+                                    {
+                                        "nodeType": "CatchClause",
+                                        "children": [],
+                                        "code": "try {\n    a = 2 / a;\n}catch(e){\n    console.log('e:', e);\n}",
+                                        "selected": false,
+                                        "edit": true
+                                    }
+                                ],
+                                "code": "try {\n    a = 2 / a;\n}catch(e){\n    console.log('e:', e);\n}finally{\n    console.log('finally')\n}",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "",
+                        "selected": false,
+                        "edit": false
+                    },
+                    {
+                        "nodeType": "Loops",
+                        "children": [
+                            {
+                                "nodeType": "WhileStatement",
+                                "children": [],
+                                "code": "while(true){\n    console.log('true')\n}",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "DoWhileStatement",
+                                "children": [],
+                                "code": "do{\n  a --;\n}while(a > 1)",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ForStatement",
+                                "children": [],
+                                "code": "for(let i = 0; i < 2; i++){\n    console.log(i);\n}",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ForInStatement",
+                                "children": [],
+                                "code": "for(let key in obj){\n}",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ForOfStatement",
+                                "children": [],
+                                "code": "for (const element of array1) {\n}",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "",
+                        "selected": false,
+                        "edit": false
+                    }
+                ],
+                "code": "null",
+                "selected": false,
+                "edit": true
+            },
+            {
+                "nodeType": "Misc",
+                "children": [
+                    {
+                        "nodeType": "Decorator",
+                        "children": [],
+                        "code": "@log\nclass Animal {\n  constructor() {\n  }\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "Directive",
+                        "children": [],
+                        "code": "function a(){\n    \"use strict\"\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "DirectiveLiteral",
+                        "children": [
+                            {
+                                "nodeType": "InterpreterDirective",
+                                "children": [],
+                                "code": "#! node foo",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "function a(){\n    \"use strict\"\n}",
+                        "selected": false,
+                        "edit": true
+                    }
+                ],
+                "code": "",
+                "selected": false,
+                "edit": false
+            },
+            {
+                "nodeType": "Expressions",
+                "children": [
+                    {
+                        "nodeType": "Super",
+                        "children": [],
+                        "code": "class b extends a{\n    constructor(){\n        super()\n    }\n}\n",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "Import",
+                        "children": [],
+                        "code": "import \"a\";\nvar promise = import(\"a\");",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ThisExpression",
+                        "children": [],
+                        "code": "this.a",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ArrowFunctionExpression",
+                        "children": [],
+                        "code": "let a = (a)=>{\n    return a;\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "YieldExpression",
+                        "children": [],
+                        "code": "function* g1() {\n    yield 2;\n    yield arguments;\n    yield* a();\n}\n",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "AwaitExpression",
+                        "children": [],
+                        "code": "let a = await 12,\n    b = await c();",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ArrayExpression",
+                        "children": [],
+                        "code": "let a = [1,4,3];",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ObjectExpression",
+                        "children": [
+                            {
+                                "nodeType": "ObjectMember",
+                                "children": [
+                                    {
+                                        "nodeType": "ObjectProperty",
+                                        "children": [],
+                                        "code": "let a = {\n    b: 1,\n    [c]: true,\n    x\n}",
+                                        "selected": false,
+                                        "edit": true
+                                    },
+                                    {
+                                        "nodeType": "ObjectMethod",
+                                        "children": [],
+                                        "code": "let a = {\n    b(){\n    },\n    get c(){\n        return this._c;\n    },\n}",
+                                        "selected": false,
+                                        "edit": true
+                                    }
+                                ],
+                                "code": "",
+                                "selected": false,
+                                "edit": false
+                            }
+                        ],
+                        "code": "let a = {\n    b: 1,\n    c(){\n    }\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "RecordExpression",
+                        "children": [],
+                        "code": "let a  = #{b: 1}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "TupleExpression",
+                        "children": [],
+                        "code": "let a = #[1,2,3]",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "FunctionExpression",
+                        "children": [],
+                        "code": "let a = async function* a(b, c = 1){\n    return b + c;\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "Unary operations",
+                        "children": [
+                            {
+                                "nodeType": "UnaryExpression",
+                                "children": [],
+                                "code": "let a = -1;\ndelete b.c;\n!a;\ntypeof a;\nvoid 0;\n",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "UpdateExpression",
+                                "children": [],
+                                "code": "a++\n++a\na--\n--a",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "",
+                        "selected": false,
+                        "edit": false
+                    },
+                    {
+                        "nodeType": "Binary operations",
+                        "children": [
+                            {
+                                "nodeType": "BinaryExpression",
+                                "children": [],
+                                "code": "let a = b === 1,\n    c = d instanceof e",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "AssignmentExpression",
+                                "children": [],
+                                "code": "a = 1;\na += 1;",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "LogicalExpression",
+                                "children": [],
+                                "code": "a || b\na && b",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "SpreadElement",
+                                "children": [],
+                                "code": "let a = {\n    ... b\n}",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ArgumentPlaceholder",
+                                "children": [],
+                                "code": "const g = f(?, 1);",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "MemberExpression",
+                                "children": [],
+                                "code": "a.b;\na[b];",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "OptionalMemberExpression",
+                                "children": [],
+                                "code": "a?.b;\na?.b[c];",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "BindExpression",
+                                "children": [],
+                                "code": "a::b;",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "",
+                        "selected": false,
+                        "edit": false
+                    },
+                    {
+                        "nodeType": "ConditionalExpression",
+                        "children": [],
+                        "code": "a ? b : c;",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "CallExpression",
+                        "children": [],
+                        "code": "",
+                        "selected": false,
+                        "edit": false
+                    },
+                    {
+                        "nodeType": "OptionalCallExpression",
+                        "children": [],
+                        "code": "f?.(1)(2);",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "NewExpression",
+                        "children": [],
+                        "code": "let a = new A(1);",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "SequenceExpression",
+                        "children": [],
+                        "code": "function a(){\n    return b + 1, c, d;\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ParenthesizedExpression",
+                        "children": [],
+                        "code": "(a)",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "DoExpression",
+                        "children": [],
+                        "code": "let a = do {\n    'do';\n};",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ModuleExpression",
+                        "children": [],
+                        "code": "let moduleBlock = module {\n  export let y = 1;\n};",
+                        "selected": false,
+                        "edit": true
+                    }
+                ],
+                "code": "",
+                "selected": false,
+                "edit": false
+            },
+            {
+                "nodeType": "Template Literals",
+                "children": [
+                    {
+                        "nodeType": "TemplateLiteral",
+                        "children": [],
+                        "code": "let a = `${b} 1 2 3`",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "TaggedTemplateExpression",
+                        "children": [],
+                        "code": "tag `1 ${a} 2`",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "TemplateElement",
+                        "children": [],
+                        "code": "let a = `${b} 1 2 3 ${c}`",
+                        "selected": false,
+                        "edit": true
+                    }
+                ],
+                "code": "",
+                "selected": false,
+                "edit": false
+            },
+            {
+                "nodeType": "Patterns",
+                "children": [
+                    {
+                        "nodeType": "ObjectPattern",
+                        "children": [],
+                        "code": "const {a, b, ...c} = d;",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ArrayPattern",
+                        "children": [],
+                        "code": "let [a, b] = c;",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "RestElement",
+                        "children": [],
+                        "code": "function a(...b){\n\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "AssignmentPattern",
+                        "children": [],
+                        "code": "function a(c = 1){\n\n}",
+                        "selected": false,
+                        "edit": true
+                    }
+                ],
+                "code": "",
+                "selected": false,
+                "edit": false
+            },
+            {
+                "nodeType": "Classes",
+                "children": [
+                    {
+                        "nodeType": "ClassBody",
+                        "children": [],
+                        "code": "class A extends B{\n    a(){\n    }\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ClassMethod",
+                        "children": [],
+                        "code": "class A extends B{\n    static async *a(){\n    }\n    [b](){\n    }\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ClassPrivateMethod",
+                        "children": [],
+                        "code": "class A extends B{\n    static async * #a(){\n    }\n    [b](){\n    }\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ClassProperty",
+                        "children": [],
+                        "code": "class A extends B{\n  [b] = 2\n  static a = 1\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ClassPrivateProperty",
+                        "children": [],
+                        "code": "class A extends B{\n  static #a = 1\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "StaticBlock",
+                        "children": [],
+                        "code": "class C {\n  static {\n    try {\n    }\n    catch {\n    }\n  }\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ClassDeclaration",
+                        "children": [],
+                        "code": "class A extends B{\n    a(){\n    }\n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "ClassExpression",
+                        "children": [],
+                        "code": "const a = class A extends B{\n  \n}",
+                        "selected": false,
+                        "edit": true
+                    },
+                    {
+                        "nodeType": "MetaProperty",
+                        "children": [],
+                        "code": "function Foo() {\n  new.target\n}\n\nclass A {\n  constructor() {\n    console.log(new.target.name);\n  }\n}\n",
+                        "selected": false,
+                        "edit": true
+                    }
+                ],
+                "code": "",
+                "selected": false,
+                "edit": false
+            },
+            {
+                "nodeType": "Modules",
+                "children": [
+                    {
+                        "nodeType": "Imports",
+                        "children": [
+                            {
+                                "nodeType": "ImportDeclaration",
+                                "children": [],
+                                "code": "import \"a.css\";\nimport a from './b.js';\nimport { c, d } from './d.js';\nimport * as e from 'f';",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ImportSpecifier",
+                                "children": [],
+                                "code": "import { c } from './d.js';",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ImportDefaultSpecifier",
+                                "children": [],
+                                "code": "import a from './b.js';",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ImportNamespaceSpecifier",
+                                "children": [],
+                                "code": "import * as e from 'f';",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ImportAttribute",
+                                "children": [],
+                                "code": "import foo from \"./foo.json\" assert { type: \"json\" }",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "",
+                        "selected": false,
+                        "edit": false
+                    },
+                    {
+                        "nodeType": "Exports",
+                        "children": [
+                            {
+                                "nodeType": "ExportNamedDeclaration",
+                                "children": [],
+                                "code": "export {foo, bar};\nexport let name1, name2;\nexport function functionName() { /* … */ }\nexport {foo1} from \"mod\";\nexport * as foo2 from \"bar\";",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ExportSpecifier",
+                                "children": [],
+                                "code": "export {foo, bar};",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ExportNamespaceSpecifier",
+                                "children": [],
+                                "code": "export * as foo2 from \"bar\";",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ExportDefaultDeclaration",
+                                "children": [],
+                                "code": "export default 1;",
+                                "selected": false,
+                                "edit": true
+                            },
+                            {
+                                "nodeType": "ExportAllDeclaration",
+                                "children": [],
+                                "code": "export * from \"mod\";",
+                                "selected": false,
+                                "edit": true
+                            }
+                        ],
+                        "code": "",
+                        "selected": false,
+                        "edit": false
+                    }
+                ],
+                "code": "",
+                "selected": false,
+                "edit": false
+            }
+        ]
+    }
+}
