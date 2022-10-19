@@ -13,29 +13,27 @@ export default {
 	svgWidth: null,
 	svgHeight: null,
 
-	init(container){
+	init(svg){
 		this.dragstarted = this.dragstarted.bind(this);
 		this.dragged = this.dragged.bind(this);
 		this.dragended = this.dragended.bind(this);
 		this.wieel = this.wieel.bind(this);
 
-		this.svgWidth = this.width = container.clientWidth;
-		this.svgHeight = this.height = container.clientHeight;
+		this.svgWidth = this.width = parseInt(svg.getAttribute('width'));
+		this.svgHeight = this.height = parseInt(svg.getAttribute('height'));
+		
+		d3Selection.select(svg)
+      .attr("width", this.width)
+      .attr("height", this.height)
+      .attr("viewBox", [0, 0, this.width, this.height])
+			.call( d3Drag.drag()
+					.on('start', this.dragstarted)
+					.on('drag', this.dragged)
+					.on('end', this.dragended) )
+					.on('wheel', this.wieel);
 
-		let svg =d3Selection
-				.select(container).append('svg')
-		      .attr("width", this.width)
-		      .attr("height", this.height)
-		      .attr("viewBox", [0, 0, this.width, this.height])
-					.call( d3Drag.drag()
-							.on('start', this.dragstarted)
-							.on('drag', this.dragged)
-							.on('end', this.dragended) )
-							.on('wheel', this.wieel);
+		this.svg = svg;
 
-		this.svg = svg._groups[0][0];
-
-		return this.svg;
 	},
 	dragstarted(e){
 		let viewBox = this.svg.getAttribute('viewBox').split(',');

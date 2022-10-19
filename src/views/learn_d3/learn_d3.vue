@@ -1,5 +1,6 @@
 <template>
-	<div id="learnD3" ref="container">
+	<div id="learnD3">
+		<svg ref="svg"></svg>
 	</div>
 </template>
 
@@ -16,20 +17,22 @@
 		methods: {
 			resize(){
 				let
-					container = this.$refs.container,
-					svg = container.childNodes[0];
+					svg = this.$refs.svg,
+					container = svg.parentNode;
 
 				svg.setAttribute('width', container.clientWidth);
 				svg.setAttribute('height', container.clientHeight);
 			},
 		},
 		mounted(){
+			console.log('修改');
 			// svg 自适应满屏
 			window.addEventListener('resize', this.resize);
+			this.resize();
 			// 初始化拖拽
-			let svg = initDrag.init(this.$refs.container);
+			initDrag.init(this.$refs.svg);
 			// 	初始化树
-			tree(svg, data);
+			tree(this.$refs.svg, data);
 		},
 		beforeDestroy(){
 			window.removeEventListener('resize', this.resize);
