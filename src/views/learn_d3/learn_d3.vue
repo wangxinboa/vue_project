@@ -1,5 +1,6 @@
 <template>
-	<div id="learnD3">
+	<div id="learnD3"
+      v-on:mousewheel.prevent>
 		<svg ref="svg"></svg>
 	</div>
 </template>

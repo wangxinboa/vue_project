@@ -30,9 +30,10 @@ export default function Tree(svg, data){
 
   // Compute the layout.
   const
-  	dx = 10,
-  	dy = width / (root.height + padding);
+  	dx = 20,
+    dy = width / (root.height + padding);
 
+  // console.log('dx:', dx, 'dy:', dy);
   d3Hierarchy.tree().nodeSize([dx, dy])(root);
 
   const svgSelector = d3Selection.select(svg);

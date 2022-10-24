@@ -1,6 +1,5 @@
 <template>
   <div id="app"
-      v-on:mousewheel.prevent
       v-on:contextmenu.prevent>
     <router-view/>
   </div>

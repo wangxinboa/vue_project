@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>camera1</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="../../../../examples/main.css">
+	</head>
+
+	<body>
+
+		<div id="container"></div>
+
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "../../../../build/three.module.js"
+				}
+			}
+		</script>
+		<script type="module">
+			import * as THREE from 'three';
+
+			import Stats from '../../../../examples/jsm/libs/stats.module.js';
+			import { GUI } from '../../../../examples/jsm/libs/lil-gui.module.min.js';
+			import { OrbitControls } from '../../../../examples/jsm/controls/OrbitControls.js';
+
+			import PerspectiveCameraModel from '../../helper/PerspectiveCameraModel.js';
+
+			const stats = new Stats();
+			document.body.appendChild( stats.dom );
+
+			const renderer = new THREE.WebGLRenderer( { antialias: true } );
+			renderer.setPixelRatio( window.devicePixelRatio );
+			renderer.setClearColor( 0x000000, 0.0 );
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.autoClear = false;
+			document.body.appendChild( renderer.domElement );
+
+			const scene = new THREE.Scene();
+
+			const camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight / 2, 1, 10000 );
+			camera.position.set( 0, 0, 800 );
+
+			const controls = new OrbitControls( camera, renderer.domElement );
+			controls.target.set(0, 0, 0);
+
+			const cameraModel = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight / 2, 150, 1000 );
+			cameraModel.position.set( 0, 0, 400 );
+
+			const cameraHelper = new PerspectiveCameraModel(cameraModel);
+			scene.add(cameraHelper);
+
+			const mesh1 = new THREE.Mesh(
+				new THREE.SphereGeometry( 100, 16, 8 ),
+				new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } )
+			);
+			scene.add( mesh1 );
+
+			const mesh2 = new THREE.Mesh(
+				new THREE.SphereGeometry( 50, 16, 8 ),
+				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true } )
+			);
+			mesh2.position.y = 150;
+			scene.add( mesh2 );
+
+			const mesh3 = new THREE.Mesh(
+				new THREE.SphereGeometry( 5, 16, 8 ),
+				new THREE.MeshBasicMaterial( { color: 0x0000ff, wireframe: true } )
+			);
+			mesh3.position.z = 150;
+			scene.add( mesh3 );
+
+
+
+			window.addEventListener( 'resize', onWindowResize );
+			function onWindowResize() {
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				camera.aspect = window.innerWidth / window.innerHeight / 2;
+				camera.updateProjectionMatrix();
+
+				cameraModel.aspect = window.innerWidth / window.innerHeight / 2;
+				cameraModel.updateProjectionMatrix();
+			}
+
+			animate();
+			function animate() {
+				renderer.clear();
+
+				renderer.setViewport( 0, 0, window.innerWidth / 2, window.innerHeight );
+				renderer.render( scene, cameraModel );
+
+				renderer.setViewport( window.innerWidth / 2, 0, window.innerWidth / 2, window.innerHeight );
+				renderer.render( scene, camera );
+
+				stats.update();
+				controls.update();
+
+				requestAnimationFrame( animate );
+			}
+		</script>
+	</body>
+</html>

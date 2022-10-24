@@ -56,6 +56,14 @@ export default {
 			y = e.y,
 			scale = 1 + this.proportion * e.deltaY;
 
+		this.scale(scale, x, y);
+	},
+	scale(scale, x, y){
+		if( this.width * scale < 10 || this.width * scale > 10000 ||
+			this.height * scale < 10 || this.height * scale > 10000 ){
+			return;
+		}
+
 		this.startX += x / this.svgWidth * this.width * (1 - scale);
 		this.startY += y / this.svgHeight * this.height * (1 - scale);
 

@@ -107,7 +107,8 @@ export default function() {
     var t = treeRoot(root);
 
     // Compute the layout using Buchheim et al.’s algorithm.
-    t.eachAfter(firstWalk), t.parent.m = -t.z;
+    t.eachAfter(firstWalk);
+    t.parent.m = -t.z;
     t.eachBefore(secondWalk);
 
     // If a fixed node size is specified, scale x and y.

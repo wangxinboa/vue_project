@@ -18,5 +18,9 @@
 	{
 		"name": "Fast and Simple Horizontal Coordinate Assignment",
 		"allowChange": true
+	},
+	{
+		"name": "Tidier Drawings of Trees",
+		"allowChange": true
 	}
 ]
