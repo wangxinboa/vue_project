@@ -175,6 +175,10 @@
 					if( ast[this.data.nodeType] ){
 						this.data.selected = !this.data.selected;
 						if( this.data.selected ){
+							if( this.astMessage.selectedAstNode[0] ){// 只选择一个
+								this.astMessage.selectedAstNode[0].selected = false;
+								this.astMessage.selectedAstNode.pop();
+							}
 							this.astMessage.selectedAstNode.push(this.data);
 						}else{
 							let indexOf = this.astMessage.selectedAstNode.indexOf(this.data);

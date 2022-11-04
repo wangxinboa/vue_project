@@ -61,10 +61,12 @@ const router = new VueRouter({
 	routes
 })
 
-// router.beforeEach((to, from, next)=>{
-	// console.log('to:', to);
-	// console.log('from:', from);
-// 	next();
-// });
+router.beforeEach((to, from, next)=>{
+	if( to.fullPath === '/' ){
+		next('/show_myself');
+	}else{
+		next();
+	}
+});
 
 export default router
