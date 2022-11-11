@@ -174,8 +174,8 @@
 			position: relative;
 			display: flex;
 			width: 100%;
-			height: 0.3rem;
-			line-height: 0.3rem;
+			height: 0.24rem;
+			line-height: 0.24rem;
 			font-size: 0.14rem;
 	    color: #ffffff;
 	    background-color: #494949;
@@ -209,7 +209,7 @@
 	    	right: 0;
 	    	top: 0;
 	    	padding: 0 0.1rem;
-	    	height: 0.3rem;
+	    	height: 0.24rem;
 		    background-color: #494949;
 		    opacity: 0;
 	    	transition: opacity .3s ,background-color .3s;

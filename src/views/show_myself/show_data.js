@@ -8,7 +8,7 @@ export default [
 	// 	]
 	// },
 	{
-		name: '个人积累',
+		name: '个人学习',
 		id: 'learn',
 		entries: [
 			{ title: 'd3学习', path: '/learn_d3' },

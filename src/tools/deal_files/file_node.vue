@@ -12,6 +12,7 @@
 			<div class="btns">
 				<div class="btn">
 					<div title="导出js文件" class="iconfont icon-output"
+						v-if="fileNode.files"
 						v-on:mousedown.stop="exportJSFiles(fileNode)"></div>
 				</div>
 			</div>
@@ -68,32 +69,33 @@
 				}
 			},
 			exportJSFiles(node){
+				console.log('node:', node);
 				if( node.files ){
-					node.files.forEach((file, index)=>{
-						setTimeout(()=>{
-							if( file.file ){
-								console.log('file:', file);
-								let a = document.createElement('a');					// 创建a标签
-				        let e = document.createEvent('MouseEvents');	// 创建鼠标事件对象
-				        e.initEvent('click', false, false);						// 初始化事件对象
-								// 字符内容转变成blob地址
-								let blob = new Blob([file.file]);
-								a.href = URL.createObjectURL(blob);
-				        a.download = file.name + '.js';								// 设置下载文件名
-							  a.dispatchEvent(e);
-							}
-						}, 3000 * (index + 1));
-					})
-				}
+					let code = '',
+							exportFiles = [];
 
-				if( node.file ){
+					function recursive(file, path = '.'){
+						if( file.file ){
+							code += `import czm_${file.name} from '${path}.js';\n`;
+							exportFiles.push(`czm_${file.name}`)
+						}else if( file.files ){
+							file.files.forEach((item)=>{
+								recursive(item, `${path}/${item.name}` );
+							});
+						}
+					}
+
+					recursive(node);
+
+					code += `\nexport default {\n\t${exportFiles.join(',\n\t')}\n}`
+
 					let a = document.createElement('a');					// 创建a标签
 	        let e = document.createEvent('MouseEvents');	// 创建鼠标事件对象
 	        e.initEvent('click', false, false);						// 初始化事件对象
 					// 字符内容转变成blob地址
-					let blob = new Blob([node.file]);
+					let blob = new Blob([code]);
 					a.href = URL.createObjectURL(blob);
-	        a.download = node.name + '.js';								// 设置下载文件名
+	        a.download = 'CzmBuiltins.js';								// 设置下载文件名
 				  a.dispatchEvent(e);
 				}
 			},

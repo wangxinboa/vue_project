@@ -1,9 +1,10 @@
 
 
-export default function getFilesTree(files, callback){
+export default function getFilesTree(files, callback, loadOver = ()=>{}){
 	// 将 files 信息转化为 tree
 	let	filesTree = null,
-			folderOrders = {};
+			folderOrders = {},
+			hasLoad = 0;
 
 	for( let i = 0; i < files.length; i++ ){
 		let file = files[i],
@@ -23,6 +24,7 @@ export default function getFilesTree(files, callback){
 					let fileNode = {
 						fullName: name,
 						name: nameArr[0],
+						jsName: nameArr[0] + '.js',
 					}
 
 					reader.readAsText(file);
@@ -30,7 +32,14 @@ export default function getFilesTree(files, callback){
 					reader.onload = function(e){
 						// fileNode.file = reader.result;
 						callback(fileNode, reader.result);
+						hasLoad ++;
+
+						if( hasLoad === files.length ){
+							loadOver();
+						}
 					}
+				}else{
+					hasLoad ++;
 				}
 			}else{//	是文件夹
 				if( level === 0 ){//	是上传的根文件夹

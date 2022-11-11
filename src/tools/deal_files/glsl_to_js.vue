@@ -6,6 +6,11 @@
 				<input type="file" webkitdirectory='true'
 					v-on:change="readJlslFiles">
 			</div>
+			<div class="button export"
+				v-if="loadOver"
+				v-on:mousedown="exportJsFiles">
+				导出 js 文件
+			</div>
 		</div>
 		<div class="title">文件树</div>
 		<div class="file_tree">
@@ -27,15 +32,48 @@
 		},
 		data(){
 			return {
-				filesTree: null
+				filesTree: null,
+				loadOver: false
 			}
 		},
 		methods: {
 			readJlslFiles(e){
-				this.filesTree = getFilesTree(e.target.files, this.jlslToJs);
+				this.filesTree = getFilesTree(e.target.files,
+					(fileNode, file)=>{
+						fileNode.file = 'export default `' + file + '`';
+					},
+					()=>{
+						this.loadOver = true;
+					}
+				);
 			},
-			jlslToJs(fileNode, file){
-				fileNode.file = 'export default `' + file + '`';
+			exportJsFiles(){
+				var zip = new JSZip();
+				this.zipFile(zip, this.filesTree);
+
+				zip.generateAsync({type:"blob"})
+					.then(function(content) {
+
+						let a = document.createElement('a');					// 创建a标签
+		        let e = document.createEvent('MouseEvents');	// 创建鼠标事件对象
+		        e.initEvent('click', false, false);						// 初始化事件对象
+						// 字符内容转变成blob地址
+						let blob = new Blob([content]);
+						a.href = URL.createObjectURL(blob);
+		        a.download = 'js.zip';								// 设置下载文件名
+					  a.dispatchEvent(e);
+					  
+					});
+			},
+			zipFile(folder, fileTree){
+				fileTree.files.forEach((node)=>{
+					if( node.file ){
+						folder.file(node.jsName, node.file);
+					}else if( node.files ){
+						// folder = folder.folder(node.name);
+						this.zipFile( folder.folder(node.name), node );
+					}
+				});
 			}
 		}
 	}
