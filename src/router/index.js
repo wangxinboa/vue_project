@@ -24,11 +24,12 @@ const routes = [
 		])
 	},
 
+
+	// 基本通过，可以对外进行展示
 	{
 		path: '/show_myself',
 		component: () => import('../views/show_myself/show_myself.vue'),
 	},
-
 	{
 		path: '/tex_to_image',//	图片格式的公式
 		component: () => import('../tools/mathjax/tex_to_image.vue'),
@@ -36,6 +37,10 @@ const routes = [
 	{
 		path: '/image_to_base64',//	展示图片 base64
 		component: () => import('../tools/image/image_to_base64.vue'),
+	},
+	{
+		path: '/glsl_to_js',// jlsl文件转化为js文件
+		component: () => import('../tools/deal_files/glsl_to_js.vue'),
 	},
 	{
 		path: '/learn_ast_node',//	学习 ast node 信息

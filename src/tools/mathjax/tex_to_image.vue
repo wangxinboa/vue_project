@@ -1,5 +1,5 @@
 <template>
-	<div class="tex_to_image">
+	<div class="tool-tex_to_image">
 		<div class="tex">
 			<div class="title">数学公式-Tex</div>
 			<textarea class="tex_text_area"
@@ -42,7 +42,7 @@
 </script>
 
 <style lang="less">
-	.tex_to_image{
+	.tool-tex_to_image{
 		padding: 0 10%;
 		width: 100%;
 		height: 100%;

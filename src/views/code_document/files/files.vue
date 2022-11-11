@@ -47,7 +47,6 @@
 		},
 		methods: {
 			importCodeFiles(e){
-				// console.log("importCodeFiles:", e);
 				let files = e.target.files;
 
 				this.analyseResult.filesTree = getFileTreeByFolder(files);

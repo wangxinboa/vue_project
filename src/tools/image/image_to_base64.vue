@@ -1,5 +1,5 @@
 <template>
-	<div class="image_to_base64">
+	<div class="tool-image_to_base64">
 		<div class="operation">
 			<div class="button import">
 				导入
@@ -63,7 +63,7 @@
 </script>
 
 <style lang="less">
-	.image_to_base64{
+	.tool-image_to_base64{
 		padding: 0 10%;
 		width: 100%;
 		height: 100%;
