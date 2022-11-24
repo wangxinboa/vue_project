@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>wmts</title>
+		<style type="text/css">
+			html, body{
+			  margin: 0;
+			  padding: 0;
+			  border-width: 0;
+			  width: 100%;
+			  height: 100%;
+			  box-sizing: border-box;
+			  font-size: 100px;
+			}
+			div, svg, pre, textarea, input, iframe, span, img, p, canvas
+			h1, h2, h3, h4, h5, h6 {
+			  margin: 0;
+			  padding: 0;
+			  border-width: 0;
+			  user-select: none;
+			  box-sizing: border-box;
+			  outline: none;
+			}
+			textarea, canvas, input{
+			  display: block;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	</head>
+	<body>
+		<script src="../../three/build/three.js"></script>
+		<script src="../../js-priority-queue/priority-queue.js"></script>
+		<script type="module">
+			import GlobeView from '../src/Core/Prefab/GlobeView.js';
+
+			const 
+				positionOnGlobe = {
+					longitude: 119.889805,
+					latitude: 30.263137,
+					altitude: 20000000
+				},
+				viewerDiv = document.body,
+				globe = new GlobeView(viewerDiv, positionOnGlobe);
+
+			globe.addLayer({
+				"type": "color",
+				"protocol":   "wmts",
+				"id":         "Ortho",
+				"url":        "https://wxs.ign.fr/decouverte/geoportail/wmts",
+				"networkOptions": {
+					"crossOrigin": "anonymous"
+				},
+				"updateStrategy": {
+					"type": "0",
+					"options": {}
+				},
+				"options": {
+					"attribution" : {
+						"name":"IGN",
+						"url":"http://www.ign.fr/"
+					},
+					"name": "ORTHOIMAGERY.ORTHOPHOTOS",
+					"mimetype": "image/jpeg",
+					"tileMatrixSet": "PM",
+					"tileMatrixSetLimits": {
+						"2": {
+							"minTileRow": 0,
+							"maxTileRow": 4,
+							"minTileCol": 0,
+							"maxTileCol": 4
+						},
+						"3": {
+							"minTileRow": 0,
+							"maxTileRow": 8,
+							"minTileCol": 0,
+							"maxTileCol": 8
+						},
+						"4": {
+							"minTileRow": 0,
+							"maxTileRow": 16,
+							"minTileCol": 0,
+							"maxTileCol": 16
+						},
+						"5": {
+							"minTileRow": 0,
+							"maxTileRow": 32,
+							"minTileCol": 0,
+							"maxTileCol": 32
+						},
+						"6": {
+							"minTileRow": 1,
+							"maxTileRow": 64,
+							"minTileCol": 0,
+							"maxTileCol": 64
+						},
+						"7": {
+							"minTileRow": 3,
+							"maxTileRow": 128,
+							"minTileCol": 0,
+							"maxTileCol": 128
+						},
+						"8": {
+							"minTileRow": 7,
+							"maxTileRow": 256,
+							"minTileCol": 0,
+							"maxTileCol": 256
+						},
+						"9": {
+							"minTileRow": 15,
+							"maxTileRow": 512,
+							"minTileCol": 0,
+							"maxTileCol": 512
+						},
+						"10": {
+							"minTileRow": 31,
+							"maxTileRow": 1024,
+							"minTileCol": 0,
+							"maxTileCol": 1024
+						},
+						"11": {
+							"minTileRow": 62,
+							"maxTileRow": 2048,
+							"minTileCol": 0,
+							"maxTileCol": 2048
+						},
+						"12": {
+							"minTileRow": 125,
+							"maxTileRow": 4096,
+							"minTileCol": 0,
+							"maxTileCol": 4096
+						},
+						"13": {
+							"minTileRow": 2739,
+							"maxTileRow": 4628,
+							"minTileCol": 41,
+							"maxTileCol": 7917
+						},
+						"14": {
+							"minTileRow": 5478,
+							"maxTileRow": 9256,
+							"minTileCol": 82,
+							"maxTileCol": 15835
+						},
+						"15": {
+							"minTileRow": 10956,
+							"maxTileRow": 18513,
+							"minTileCol": 165,
+							"maxTileCol": 31670
+						},
+						"16": {
+							"minTileRow": 21912,
+							"maxTileRow": 37026,
+							"minTileCol": 330,
+							"maxTileCol": 63341
+						},
+						"17": {
+							"minTileRow": 43825,
+							"maxTileRow": 74052,
+							"minTileCol": 660,
+							"maxTileCol": 126683
+						},
+						"18": {
+							"minTileRow": 87651,
+							"maxTileRow": 148105,
+							"minTileCol": 1320,
+							"maxTileCol": 253366
+						},
+						"19": {
+							"minTileRow": 175302,
+							"maxTileRow": 294060,
+							"minTileCol": 170159,
+							"maxTileCol": 343473
+						},
+						"20": {
+							"minTileRow": 376733,
+							"maxTileRow": 384679,
+							"minTileCol": 530773,
+							"maxTileCol": 540914
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
