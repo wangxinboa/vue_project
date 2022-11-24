@@ -8,8 +8,8 @@ const routes = [
 
 	// 基本通过，可以对外进行展示
 	{
-		path: '/show_myself',
-		component: () => import('../views/show_myself/show_myself.vue'),
+		path: '/index',
+		component: () => import('../views/index.vue'),
 	},
 	{
 		path: '/tex_to_image',//	图片格式的公式
@@ -29,7 +29,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next)=>{
 	if( to.fullPath === '/' ){
-		next('/show_myself');
+		next('/index');
 	}else{
 		next();
 	}
