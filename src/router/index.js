@@ -11,6 +11,14 @@ const routes = [
 		path: '/show_myself',
 		component: () => import('../views/show_myself/show_myself.vue'),
 	},
+	{
+		path: '/tex_to_image',//	图片格式的公式
+		component: () => import('../views/tools/tex_to_image.vue'),
+	},
+	{
+		path: '/image_to_base64',//	图片转 base64
+		component: () => import('../views/tools/image_to_base64.vue'),
+	},
 ]
 
 const router = new VueRouter({
@@ -20,7 +28,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next)=>{
-	console.log('to:', to);
 	if( to.fullPath === '/' ){
 		next('/show_myself');
 	}else{
