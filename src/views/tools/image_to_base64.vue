@@ -4,13 +4,12 @@
 			class="header"
 			icon="tupian"
 			title="图片转换 base64"
-			v-on:iconMouswDown="$router.push('/show_myself')" />
+			v-on:iconMouswDown="$router.push(paths.index)" />
+			
 	</div>
 </template>
 
 <script>
-	import router from '@/router/index.js';
-
 	export default {
 
 	}

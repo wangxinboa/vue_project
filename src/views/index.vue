@@ -26,7 +26,7 @@
 
 
 <script>
-	import router from '@/router/index.js';
+	import router, { paths } from '@/router/index.js';
 	// import data from './'
 
 	export default {
@@ -36,14 +36,16 @@
 					{
 						type: '工具',
 						items: [
-							{ title: '数学公式 mathjax', path: '/tex_to_image' },
-							{ title: '图片转换 base64', path: '/image_to_base64' }
+							{ title: '数学公式 mathjax', path: paths.texToImage },
+							{ title: '图片转换 base64', path: paths.imageToBase64 }
 						]
 					},
-					// {
-					// 	type: '组件',
-					// 	items: []
-					// }
+					{
+						type: '代码学习',
+						items: [
+							// { title: '组件', path:  },
+						]
+					}
 
 				]
 			}

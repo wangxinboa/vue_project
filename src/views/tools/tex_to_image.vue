@@ -4,12 +4,12 @@
 			class="header"
 			icon="fsux_tubiao_gongshi_jisuan"
 			title="数学公式 mathjax"
-			v-on:iconMouswDown="$router.push('/show_myself')" />
+			v-on:iconMouswDown="$router.push(paths.index)" />
+			
 	</div>
 </template>
 
 <script>
-	import router from '@/router/index.js';
 
 	export default {
 
