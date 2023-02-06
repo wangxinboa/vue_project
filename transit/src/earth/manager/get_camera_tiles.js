@@ -2,7 +2,7 @@ import {
 	Matrix4,
 	Frustum,
 	Vector2
-} from '../libs/three.module.js';
+} from '../../libs/three.module.js';
 
 function tileIsVision(camera, tile){
 	let
@@ -19,7 +19,7 @@ function tileIsVision(camera, tile){
 	);
 
 	if( _frustum.intersectsSphere(boundingSphere) ){
-		
+
 		let normals = tile.gridCenters;
 
 		for( let i = 0, len = normals.length; i < len; i++ ){
@@ -60,31 +60,34 @@ function subIsVision(ellipse, canvas, camera, tile, sseThreshold){
 }
 
 export default function getTile(
-	minLevel,
-	maxLevel,
+	minLevel, maxLevel,
 	rootTiles,
 	ellipse,
 	canvas,
 	camera,
 	sseThreshold
 ){
+	// console.log('minLevel:', minLevel);
+	// console.log('maxLevel:', maxLevel);
+	// console.log('rootTiles:', rootTiles);
+	// console.log('ellipse:', ellipse);
+	// console.log('canvas:', canvas);
 	// console.log('camera:', camera);
+	// console.log('sseThreshold:', sseThreshold);
 	let
 		stack = [...rootTiles],
 		tile,
 		tiles = [];
 
 	while( tile = stack.pop() ){
-		
-		// console.log('tile:', tile.order);
-		// console.log('tileIsVision:', tileIsVision(camera, tile));
-
+		// console.log('tileIsVision:', tile.order,tileIsVision(camera, tile))
 		if( tileIsVision(camera, tile) ){
 
 			if( tile.level > minLevel ){
 				tiles.push(tile);
 			}
 
+			// console.log('subIsVision:', tile.order, (subIsVision(ellipse, canvas, camera, tile, sseThreshold) && tile.level <= maxLevel) || tile.level < minLevel )
 			if( (subIsVision(ellipse, canvas, camera, tile, sseThreshold) && tile.level <= maxLevel) || tile.level < minLevel ){
 				tile.getChildren().forEach((child)=>{
 					stack.push(child);

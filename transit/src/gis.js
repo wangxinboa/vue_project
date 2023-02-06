@@ -4,13 +4,13 @@ import {
 	Vector3
 } from './libs/three.module.js';
 
-import { isDom, isEmpty, isNumber, isInstance } from './core/check_value.js';
+import { isDom, isNumber, isInstance, isObject } from './core/check_value.js';
 import developerError from './core/developer_error.js';
 
 import Camera from './core/camera.js';
 
 import createEarth from './earth/earth.js';
-import GlobeControls from './tools/globe_controls.js';
+
 
 
 /**
@@ -33,7 +33,7 @@ import GlobeControls from './tools/globe_controls.js';
  */
 export default function createGis(options){
 
-	if( isEmpty(options) ){
+	if( !isObject(options) ){
 		developerError('请输入初始化参数');
 	}
 
@@ -51,9 +51,9 @@ export default function createGis(options){
 
 	// 初始化
 	let 
-		container, renderer, camera,
+		container, renderer, camera, globeControls,
 		scene = new Scene(),
-		earth, globeControls;
+		earth;
 
 	if( isDom(options.canvas) ){
 		renderer = new WebGLRenderer( {
@@ -105,10 +105,17 @@ export default function createGis(options){
 
 	return Object.freeze({
 		initEarth(options){
-			earth = createEarth(renderer.domElement, scene, options);
-			globeControls = new GlobeControls(camera, renderer.domElement, earth);
-
-			earth.update(camera);
+			let replenish = {
+				camera,
+				canvas: renderer.domElement,
+				scene
+			}
+			if( isObject(options) ){
+				earth = createEarth( Object.assign(options, replenish) );
+			}else{
+				earth = createEarth( replenish );
+			}
+			replenish = null;
 			return this;
 		},
 		getEarth(){
@@ -122,6 +129,7 @@ export default function createGis(options){
 		},
 		destroy(){
 			window.removeEventListener( 'resize', onWindowResize );
+			earth.destroy();
 		}
 	});
 }

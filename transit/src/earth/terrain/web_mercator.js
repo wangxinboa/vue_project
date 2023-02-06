@@ -1,5 +1,4 @@
 import {
-	Vector2,
 	Vector3,
 } from '../../libs/three.module.js';
 
@@ -12,6 +11,7 @@ export default class WebMercatorTerrain extends Terrain{
 	constructor(){
 		super(6378137, 6378137 * ( 1 - 1 / 298.257223563 ));
 	}
+	
 	// 笛卡尔坐标转化为经纬度
 	unproject(cartesian){
 		let
@@ -54,38 +54,10 @@ export default class WebMercatorTerrain extends Terrain{
 		);
 	}
 
-	longitudeToMercatorX(longitude){
-		return this.equatorial * longitude / 180 * Math.PI;
-	}
-
-	latitudeToMercatorY(latitude){
-		return this.equatorial * Math.log( Math.tan( ( latitude / 90 + 1 ) * Math.PI / 4 ) );
-	}
-
-	mercatorXToLongitude(mercatorX){
-		return mercatorX / this.equatorial / Math.PI * 180; 
-	}
-
-	mercatorYToLatitude(mercatorY){
-		return (2 * Math.atan( Math.pow( Math.E, mercatorY / this.equatorial ) ) - Math.PI / 2) / Math.PI * 180; 
-	}
-
-	tileOrderToLongitude(column, level){
-		return column / (1 << level) * 360 - 180;
-	}
-
-	tileOrderToLatitude(row, level){
-		return Math.atan( 
-							Math.sinh(
-								Math.PI * (1 - 2 * row / (1 << level))
-							)
-						) * 180 / Math.PI;
-	}
-
-	getRootTiles(layerManager){
+	getRootTiles(manager){
 			return [
 				new Tile(
-					0, 0, 0, this, layerManager
+					0, 0, 0, this, manager
 				)
 			];
 	}
@@ -175,5 +147,34 @@ export default class WebMercatorTerrain extends Terrain{
 			center,				// 中心经纬度对于的大地坐标系下的笛卡尔坐标
 			gridCenters		// 每个网格的中心点
 		};
+	}
+
+	// 内部使用
+	longitudeToMercatorX(longitude){
+		return this.equatorial * longitude / 180 * Math.PI;
+	}
+
+	latitudeToMercatorY(latitude){
+		return this.equatorial * Math.log( Math.tan( ( latitude / 90 + 1 ) * Math.PI / 4 ) );
+	}
+
+	mercatorXToLongitude(mercatorX){
+		return mercatorX / this.equatorial / Math.PI * 180; 
+	}
+
+	mercatorYToLatitude(mercatorY){
+		return (2 * Math.atan( Math.pow( Math.E, mercatorY / this.equatorial ) ) - Math.PI / 2) / Math.PI * 180; 
+	}
+
+	tileOrderToLongitude(column, level){
+		return column / (1 << level) * 360 - 180;
+	}
+
+	tileOrderToLatitude(row, level){
+		return Math.atan( 
+							Math.sinh(
+								Math.PI * (1 - 2 * row / (1 << level))
+							)
+						) * 180 / Math.PI;
 	}
 }

@@ -2,13 +2,7 @@ import {
 	Vector2,
 	Vector3,
 	Quaternion,
-	BoxGeometry,
-	MeshBasicMaterial,
-	Mesh
 } from '../libs/three.module.js';
-import Camera from '../core/camera.js';
-import Earth from '../earth/earth.js';
-
 
 const _mouseButtons = {
 	LEFT: 0,
@@ -26,26 +20,22 @@ const STATE = {
 
 export default class GlobeControls{
 
-	constructor(camera, canvas, earth){
+	constructor(canvas, camera, earth, terrain){
 		// console.log('GlobeControls');
 
 		let
-			// terrain = earth.getTerrain(),
-
 			hasDown = false,
 			isMouse,
 
 			state = STATE.NONE,
 
 			panPoint,
-			
-			// rotateStart = new Vector2(),
-			// rotateEnd = new Vector2(),
-
-			// verticalAxis =  new Vector3(),
-			// horizontalAxis = new Vector3(),
-
-			// rotatePoint,
+				
+			rotatePoint,
+			rotateStart = new Vector2(),
+			rotateEnd = new Vector2(),
+			verticalAxis =  new Vector3(),
+			horizontalAxis = new Vector3(),
 
 			zoomPoint,
 			minHeight = 0,
@@ -77,17 +67,28 @@ export default class GlobeControls{
 			v.y = - ( event.offsetY / canvas.offsetHeight ) * 2 + 1;
 		}
 
+		// 获取屏幕在地球上的坐标点(世界坐标下的笛卡尔坐标)
+		function getIntersection(event){
+			let
+				mouse = new Vector2(
+					( event.offsetX / canvas.offsetWidth ) * 2 - 1,
+						- ( event.offsetY / canvas.offsetHeight ) * 2 + 1
+				),
+				ray = camera.getMouseRay(mouse);
+
+			return terrain.getEllipseIntersection(ray.origin, ray.direction);
+		}
 
 		// Pan 操作
 
 		function handleMouseDownPan( event ){
-			panPoint = earth.getIntersection(event, camera);
+			panPoint = getIntersection(event);
 		}
 
 		function handleMouseMovePan( event ){
 			if( panPoint ){
 				let
-					intersection = earth.getIntersection(event, camera),
+					intersection = getIntersection(event),
 					earthCenter = earth.getCenter();
 
 				if( intersection ){
@@ -124,24 +125,36 @@ export default class GlobeControls{
 
 		}
 
-		function handleMouseDownRotate( event ){
-			// let intersection = earth.getIntersection(event, camera);
+		// Rotate 操作
 
-			// setMouseVector2(event, rotateStart);
+		function handleMouseDownRotate( event ){
+			// rotatePoint = getIntersection(event);
+			// console.log(intersection)
+
+			setMouseVector2(event, rotateStart);
 		}
 
-		function handleMouseMoveRotate( event ){
+		function handleMouseMoveRotate( event ){// 先实现再说
 
-			// camera.getWorldDirection(verticalAxis);
+			camera.getWorldDirection(verticalAxis);
+			horizontalAxis.copy(camera.getRightDirection());
 
-			// setMouseVector2(event, rotateEnd);
+			setMouseVector2(event, rotateEnd);
 
-			// let
-			// 	verticalAngle = ( rotateStart.x - rotateEnd.x ) * Math.PI / 2;
+			let
+				verticalAngle = ( rotateEnd.x - rotateStart.x ) * Math.PI / 2,
+				horizontalAngle = ( rotateEnd.y - rotateStart.y ) * Math.PI / 2,
 
-			// _quaternion.setFromAxisAngle( verticalAxis, verticalAngle );
+				q1 = new Quaternion(),
+				q2 = new Quaternion();
 
-			// rotateStart.copy(rotateEnd);
+			q1.setFromAxisAngle( verticalAxis, verticalAngle );
+			camera.applyQuaternion(q1);
+
+			q2.setFromAxisAngle( horizontalAxis, horizontalAngle );
+			camera.applyQuaternion(q2);
+
+			rotateStart.copy(rotateEnd);
 
 			// changeQuaternion = true;
 			// update();
@@ -165,7 +178,6 @@ export default class GlobeControls{
 
 				canvas.addEventListener( 'pointermove', onPointerMove );
 				canvas.addEventListener( 'pointerup', onPointerUp );
-
 			}
 
 			if ( event.pointerType === 'touch' ) {
@@ -253,7 +265,7 @@ export default class GlobeControls{
 		function onMouseWheel( event ){
 			event.preventDefault();
 
-			let intersection = earth.getIntersection(event, camera);
+			let intersection = getIntersection(event);
 			if( !intersection ){
 
 				return ;

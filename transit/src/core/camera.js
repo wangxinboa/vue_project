@@ -1,6 +1,5 @@
 import {
 	PerspectiveCamera,
-	Vector2,
 	Vector3
 } from '../libs/three.module.js';
 import GisMath from './math.js';
@@ -33,5 +32,16 @@ export default class GisCamera extends PerspectiveCamera{
 			origin,
 			direction
 		}
+	}
+
+	getRightDirection(){
+		let
+			start = new Vector3(0, 0, 0),
+			end = new Vector3(1, 0, 0);
+
+		GisMath.unproject(start, this);
+		GisMath.unproject(end, this);
+
+		return end.sub(start);
 	}
 }

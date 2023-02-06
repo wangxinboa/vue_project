@@ -1,15 +1,12 @@
 import {
 	Mesh,
 	Texture,
-	Vector3
-	// MeshBasicMaterial,
-	// RawShaderMaterial
 } from '../../libs/three.module.js';
 import tileGeometry from './tile_geometry.js';
 import Layer from '../layer/layer.js';
 
 export default class Tile{
-	constructor(column, row, level, terrain, layerManager, parent){
+	constructor(column, row, level, terrain, manager, parent){
 
 		this.column = column;
 		this.row = row;
@@ -17,66 +14,19 @@ export default class Tile{
 		this.order = `${column}-${row}-${level}`;
 
 		this.terrain = terrain;
-		this.layerManager = layerManager;
-
-		this.layer = new Layer();
+		this.manager = manager;
 
 		this.parent = parent;
 		this.children = [];
 
+		this.isShow = false;
+		this.isRender = false;
+
+		// 初始化瓦片模型
 		this.mesh;
+		this.layer = new Layer();
 		this.textures = new Map();
 
-		this.gridCenters = null;
-		this.center = null;
-		this.geometricError = null;
-
-		this.initMesh();
-		this.updateLayer();
-	}
-
-	getChildren(){
-		if( this.children.length === 0){
-			this.children.push(
-				new Tile(
-					this.column << 1,
-					this.row << 1,
-					this.level + 1,
-					this.terrain,
-					this.layerManager,
-					this
-				),
-				new Tile(
-					this.column << 1 | 1,
-					this.row << 1,
-					this.level + 1,
-					this.terrain,
-					this.layerManager,
-					this
-				),
-				new Tile(
-					this.column << 1,
-					this.row << 1 | 1,
-					this.level + 1,
-					this.terrain,
-					this.layerManager,
-					this
-				),
-				new Tile(
-					this.column << 1 | 1,
-					this.row << 1 | 1,
-					this.level + 1,
-					this.terrain,
-					this.layerManager,
-					this
-				)
-			);
-		}
-
-		return this.children;
-	}
-
-	initMesh(){
 		let
 			geometryParams = this.terrain.computeGeometry(this.column, this.row, this.level),
 			geometry = new tileGeometry(geometryParams);
@@ -90,14 +40,49 @@ export default class Tile{
 		this.gridCenters = geometryParams.gridCenters;
 		this.center = geometryParams.center;
 		this.geometricError = geometry.boundingSphere.radius / 256;
+
+		this.updateLayer();
 	}
 
-	getSphere(){
-		return this.mesh.geometry.boundingSphere;
-	}
+	getChildren(){
+		if( this.children.length === 0){
+			this.children.push(
+				new Tile(
+					this.column << 1,
+					this.row << 1,
+					this.level + 1,
+					this.terrain,
+					this.manager,
+					this
+				),
+				new Tile(
+					this.column << 1 | 1,
+					this.row << 1,
+					this.level + 1,
+					this.terrain,
+					this.manager,
+					this
+				),
+				new Tile(
+					this.column << 1,
+					this.row << 1 | 1,
+					this.level + 1,
+					this.terrain,
+					this.manager,
+					this
+				),
+				new Tile(
+					this.column << 1 | 1,
+					this.row << 1 | 1,
+					this.level + 1,
+					this.terrain,
+					this.manager,
+					this
+				)
+			);
+		}
 
-	updateLayer(){
-		this.layer.updateMaterial(this.layerManager);
+		return this.children;
 	}
 
 	traverse(judge){
@@ -109,9 +94,13 @@ export default class Tile{
 		return this;
 	}
 
-	show(){
-		this.terrain.tileGroup.add(this.mesh);
-		this.layerManager.load(this);
+	getSphere(){
+		return this.mesh.geometry.boundingSphere;
+	}
+
+	updateLayer(){
+		this.isRender = false;
+		this.layer.updateMaterial(this.manager);
 	}
 
 	hasProviderImage(provider){
@@ -125,14 +114,20 @@ export default class Tile{
 		this.textures.set(provider, texture);
 	}
 
-	render(){
-		this.layer.render(this.textures);
+	show(){
+		if( !this.isRender ){
+			this.layer.render(this.textures);
+			this.isRender = true;
+		}
+		this.terrain.tileGroup.add(this.mesh);
+		this.isShow = true;
 	}
 
 	hide(){
 		this.terrain.tileGroup.remove(this.mesh);
-		this.layer.hide();
+		this.isShow = false;
 	}
 
-	
+
+
 }

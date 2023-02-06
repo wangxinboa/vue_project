@@ -25,16 +25,7 @@ export default class Terrain{
 		this.matrixInv = new Matrix4();
 	}
 
-	// 经纬度转化为大地坐标系下的笛卡尔坐标
-	project(cartograph){};
-
-	// 大地坐标系下的笛卡尔坐标转化为经纬度
-	unproject(cartesian){};
-
-	getRootTiles(layerManager){};
-
-	computeGeometry( column, row, level){};
-
+	// 获取设点与球体的交点
 	getEllipseIntersection(origin, direction){
 		origin = origin.clone().applyMatrix4(this.matrixInv);
 		direction = direction.clone().transformDirection(this.matrixInv);
@@ -56,7 +47,6 @@ export default class Terrain{
 
 
 		if( len > 1 ){
-			// console.log('无交点');
 			return null;
 		}else{
 			let p;
@@ -80,7 +70,6 @@ export default class Terrain{
 
 			return p;
 		}
-
 	}
 
 	// 设置中心点
@@ -115,4 +104,16 @@ export default class Terrain{
 		return this;
 	}
 
+	// 子类实现
+	// 经纬度转化为大地坐标系下的笛卡尔坐标
+	project(cartograph){};
+
+	// 大地坐标系下的笛卡尔坐标转化为经纬度
+	unproject(cartesian){};
+
+	// 获取顶部瓦片
+	getRootTiles(manager){};
+
+	// 获取计算瓦片几何体
+	computeGeometry( column, row, level){};
 }

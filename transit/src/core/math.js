@@ -1,7 +1,5 @@
 import {
 	Matrix4,
-	Vector3,
-	Camera
 } from '../libs/three.module.js';
 
 const _matrix4 = new Matrix4();

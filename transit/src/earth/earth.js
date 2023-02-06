@@ -1,167 +1,134 @@
-import {
-	Vector2,
-} from '../libs/three.module.js';
-
-import { isEmpty, isNumber, isInstance } from '../core/check_value.js';
+import { isNumber, isInstance } from '../core/check_value.js';
 import developerError from '../core/developer_error.js';
+
+import Camera from '../core/camera.js';
+import GlobeControls from '../tools/globe_controls.js';
+
+import Cartograph from './coordinates/cartograph.js';
 
 import { TerrainType } from './terrain/terrain.js';
 import WebMercatorTerrain from './terrain/web_mercator.js';
-import LayerManager from './layer/layer_manager.js';
-import Provider from './layer/provider/provider.js';
-import BingProvider from './layer/provider/bing_provider.js';
-import Cartograph from './coordinates/cartograph.js';
-import Camera from '../core/camera.js';
-import getTile from './get_tile.js';
+import Provider from './provider/provider.js';
+import BingProvider from './provider/bing_provider.js';
 
+import Manager from './manager/manager.js';
 
-function createDefaultEarthOptions(){
-	return {
-		minLevel: 1,
-		maxLevel: 19,
-		terrainType: TerrainType.WebMercatorTerrain,
-		provider: new BingProvider(),
-		origin: new Cartograph(120.04340, 30.31806, 0)
-	}
-}
+export default function createEarth( earthOptions ){
 
-
-export default function createEarth( canvas, scene, earthOptions ){
 	let
-		terrain, origin,
-		layerManager = new LayerManager(),
-		minLevel, maxLevel,
-		sseThreshold = 5,
-		defaultEarthOption = createDefaultEarthOptions();
+		{ 
+			minLevel, maxLevel, terrainType, provider, origin, sseThreshold,
+			camera, canvas, scene
+		} = earthOptions,
 
-	if( isEmpty(earthOptions) ){
-		earthOptions = defaultEarthOption;
-	}
+		terrain,
+		manager, globeControls;
+
+	let
+		defaultEarthOption = {
+			origin: new Cartograph(120.04340, 30.31806, 0),
+			provider: new BingProvider(),
+			minLevel: 1,
+			maxLevel: 19,
+			sseThreshold: 5,
+		};
+
 
 	switch( earthOptions.terrainType ){
 		case TerrainType.WebMercatorTerrain:
 			terrain = new WebMercatorTerrain();
 			break;
 		default:
-			developerError('请输入正确的地形类型');
+			terrain = new WebMercatorTerrain();
 			break;
 	}
 	scene.add( terrain.tileGroup );
 
-	if( isInstance(earthOptions.provider, Provider) ){
-		layerManager.setProvider(earthOptions.provider);
-	}else{
-		layerManager.setProvider(defaultEarthOption.provider);
-	}
+	manager = new Manager(terrain);
 
-	if( isInstance(earthOptions.origin, Cartograph) ){
-		origin = earthOptions.origin;
-	}else{
+
+	if( !isInstance(origin, Cartograph) ){
 		origin = defaultEarthOption.origin;
 	}
-	terrain.setOrigin(origin);
 
-	if( isNumber(earthOptions.minLevel) ){
-		minLevel = earthOptions.minLevel;
-	}else{
+	if( !isInstance(provider, Provider) ){
+		provider = defaultEarthOption.provider;
+	}
+	manager.setProvider(provider);
+
+
+	if( !isNumber(minLevel) ){
 		minLevel = defaultEarthOption.minLevel;
 	}
-
-	if( isNumber(earthOptions.maxLevel) ){
-		maxLevel = earthOptions.maxLevel;
-	}else{
+	if( !isNumber(maxLevel) ){
 		maxLevel = defaultEarthOption.maxLevel;
 	}
-
 	if( maxLevel < minLevel ){
 		developerError('瓦片最低层级比最高层级大');
+	}
+	manager.setBaseTiles(minLevel);
+
+	if( !isNumber(sseThreshold) ){
+		sseThreshold = defaultEarthOption.sseThreshold;
 	}
 
 	let
 		_camera = new Camera(),
 
-		rootTiles = terrain.getRootTiles(layerManager),
-		showTiles = new Map(),
-		nowTiles = new Map(),
-		baseTiles = new Map();
-
-	// console.log('rootTiles:', rootTiles);
-
-	let earth = {
-		setMinLevel(level){
-			if( level < maxLevel ){
-				minLevel = level;
-
-				rootTiles.forEach((rootTile)=>{
-					rootTile.traverse((tile)=>{
-						if( tile.level < minLevel ){
-							return true;
-						}else if( tile.level === minLevel ){
-							tile.show();
-						}
-						return false
-					});
-				});
-			}else{
-				developerError('地图最小级别比最高级别大')
-			}
-		},
-		update(camera){
-			_camera.copy(camera);
-			_camera.applyMatrix4(terrain.matrixInv);
-			_camera.updateWorldMatrix();
-
-			let tiles = getTile(minLevel, maxLevel, rootTiles, terrain.ellipse, canvas, _camera, sseThreshold);
-
-			tiles.forEach((tile)=>{
-				nowTiles.set(tile, true);
-			});
-
-			showTiles.forEach((value, tile)=>{
-				if( nowTiles.has( tile ) ){
-					nowTiles.delete(tile);
-				}else if( tile.level !== minLevel ){
-					showTiles.delete(tile);
-					tile.hide();
+		earth = {
+			setMinLevel(level){
+				if( isNumber(level) ){
+					if( maxLevel < level ){
+						developerError('比最高层级大');
+					}else{
+						minLevel = level;
+						manager.setBaseTiles(minLevel);
+					}
+				}else{
+					developerError('请输入正确的参数格式');
 				}
-			});
+			},
+			update(){
+				_camera.copy(camera);
+				_camera.applyMatrix4(terrain.matrixInv);
+				_camera.updateWorldMatrix();
 
-			nowTiles.forEach((value, tile)=>{
-				showTiles.set(tile, true);
-				tile.show();
-			});
+				manager.setCameraTile(minLevel, maxLevel, canvas, _camera, sseThreshold)
+			},
 
-			nowTiles.clear();
-		},
+			// 获得经纬度坐标
+			getCartograph(cartesian){
+				return terrain.unproject( cartesian.clone().applyMatrix4( terrain.matrixInv ) );
+			},
+			// 获得笛卡尔坐标
+			getCartesian(cartograph){
+				return terrain.project(cartograph).applyMatrix4( terrain.matrix );
+			},
+			// 设置原点的经纬度
+			setOrigin(longitude, latitude, height){
+				if( isInstance(longitude, Cartograph) ){
+					terrain.setOrigin( longitude );
+				}else if( isNumber(longitude) || isNumber(latitude) || isNumber(height) ){
+					terrain.setOrigin(new Cartograph(longitude, latitude, height));
+				}else{
+					developerError('设置原点的经纬度, 输入正确的原点数据');
+				}
+				
+				this.update();
+			},
+			// 获取中心点
+			getCenter(){
+				return terrain.center;
+			},
+			// 销毁
+			destroy(){
+				globeControls.destroy();
+			}
+		};
 
-		// 获得经纬度坐标
-		getCartograph(cartesian){
-			return terrain.unproject( cartesian.clone().applyMatrix4( terrain.matrixInv ) );
-		},
-		// 获得笛卡尔坐标
-		getCartesian(cartograph){
-			return terrain.project(cartograph).applyMatrix4( terrain.matrix );
-		},
+	globeControls = new GlobeControls(canvas, camera, earth, terrain);
 
-		setOrigin(origin){
-			terrain.setOrigin(origin);
-		},
-		getCenter(){
-			return terrain.center;
-		},
-		getIntersection(event, camera){
-			let
-				mouse = new Vector2(
-					( event.offsetX / canvas.offsetWidth ) * 2 - 1,
-						- ( event.offsetY / canvas.offsetHeight ) * 2 + 1
-				),
-				ray = camera.getMouseRay(mouse);
 
-			return terrain.getEllipseIntersection(ray.origin, ray.direction);
-		}
-	}
-
-	earth.setMinLevel(minLevel);
 
 	return Object.freeze(earth);
 }

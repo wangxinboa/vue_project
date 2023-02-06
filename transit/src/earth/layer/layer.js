@@ -1,26 +1,20 @@
 import {
-	Texture,
 	RawShaderMaterial
 } from '../../libs/three.module.js';
-import TileFS from '../../shaders/TileFS.js';
-import TileVS from '../../shaders/TileVS.js';
+import TileFS from './TileFS.js';
+import TileVS from './TileVS.js';
 
 const textureName = 'uTexture';
 
 export default class Layer{
-
 	constructor(){
 		this.material = new RawShaderMaterial();
 	}
 
-	updateMaterial(layerManager){
-		let textureNum = layerManager.providers.length;
+	updateMaterial(manager){
+		let textureNum = manager.providers.length;
 
-		this.uniforms = {
-			render: {
-				value: false
-			}
-		}
+		this.uniforms = {};
 
 		for( let i = 0; i < textureNum; i++ ){
 			this.uniforms[textureName + i] = {
@@ -37,7 +31,6 @@ export default class Layer{
 	}
 
 	render(textures){
-		// console.log('渲染图片');
 		let i = 0;
 		textures.forEach((texture)=>{
 			let
@@ -53,12 +46,5 @@ export default class Layer{
 			}
 			i++;
 		});
-		this.show();
-	}
-	show(){
-		this.uniforms.render.value = true;
-	}
-	hide(){
-		this.uniforms.render.value = false;
 	}
 }
