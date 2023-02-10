@@ -1,0 +1,121 @@
+File															√															
+Programs													√
+Declarations
+	FunctionDeclaration							√
+	VariableDeclaration							√
+		VariableDeclarator						√
+Identifier												√
+PrivateName
+Literals
+	RegExpLiteral										√
+	NullLiteral											√
+	StringLiteral										√
+	BooleanLiteral									√
+	NumericLiteral									√
+	BigIntLiteral										√
+	DecimalLiteral									√
+Functions
+Statements												
+	ExpressionStatement							√
+	BlockStatement									√
+	EmptyStatement									√
+	DebuggerStatement								√
+	WithStatement										√
+	Control flow
+		ReturnStatement								√
+		LabeledStatement							√
+		BreakStatement								√
+		ContinueStatement							√
+	Choice
+		IfStatement										√
+		SwitchStatement								√
+			SwitchCase									√
+	Exceptions
+		ThrowStatement								√
+		TryStatement									√
+			CatchClause									√
+	Loops
+		WhileStatement								√
+		DoWhileStatement							√
+		ForStatement									√
+		ForInStatement								√
+		ForOfStatement								√
+Misc
+	Decorator												√
+	Directive												√
+	DirectiveLiteral								√
+	InterpreterDirective						√
+Expressions
+	Super														√
+	Import													√
+	ThisExpression									√
+	ArrowFunctionExpression					√
+	YieldExpression									√
+	AwaitExpression									√
+	ArrayExpression									√
+	ObjectExpression								√
+		ObjectMember
+			ObjectProperty							√
+			ObjectMethod								√
+	RecordExpression								√
+	TupleExpression									√
+	FunctionExpression							√
+	Unary operations
+		UnaryExpression								√
+			UnaryOperator
+		UpdateExpression							√
+			UpdateOperator
+	Binary operations
+		BinaryExpression
+			BinaryOperator
+		AssignmentExpression
+			AssignmentOperator
+		LogicalExpression
+			LogicalOperator
+		SpreadElement
+		ArgumentPlaceholder
+		MemberExpression
+		OptionalMemberExpression
+		BindExpression
+	ConditionalExpression
+	CallExpression
+	OptionalCallExpression
+	NewExpression
+	SequenceExpression
+	ParenthesizedExpression
+	DoExpression
+	ModuleExpression
+Template Literals
+	TemplateLiteral
+	TaggedTemplateExpression
+	TemplateElement
+Patterns
+	ObjectPattern
+	ArrayPattern
+	RestElement
+	AssignmentPattern
+Classes
+	ClassBody
+	ClassMethod
+	ClassPrivateMethod
+	ClassProperty
+	ClassPrivateProperty
+	StaticBlock
+	ClassDeclaration
+	ClassExpression
+	MetaProperty
+Modules
+	ModuleDeclaration
+	ModuleSpecifier
+	Imports
+		ImportDeclaration
+		ImportSpecifier
+		ImportDefaultSpecifier
+		ImportNamespaceSpecifier
+		ImportAttribute
+	Exports
+		ExportNamedDeclaration
+		ExportSpecifier
+		ExportNamespaceSpecifier
+		ExportDefaultDeclaration
+		ExportAllDeclaration

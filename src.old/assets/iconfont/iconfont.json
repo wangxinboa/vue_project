@@ -1,0 +1,177 @@
+{
+  "id": "3193497",
+  "name": "vue_project",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "https://github.com/officialBusiness/vue_project",
+  "glyphs": [
+    {
+      "icon_id": "4862242",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "28415499",
+      "name": "移动",
+      "font_class": "yidong",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "824975",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "23191156",
+      "name": "导出2",
+      "font_class": "output",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "4320347",
+      "name": "删除",
+      "font_class": "delete",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "8817897",
+      "name": "增加添加加号",
+      "font_class": "add",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "20104488",
+      "name": "节点管理",
+      "font_class": "jiedianguanli",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "9558664",
+      "name": "HTSCIT_研究",
+      "font_class": "yanjiu",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "8039219",
+      "name": "筛选",
+      "font_class": "shaixuan",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "15270854",
+      "name": "chakan",
+      "font_class": "chakan",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "15274203",
+      "name": "yulan",
+      "font_class": "yulan",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "23191146",
+      "name": "导入",
+      "font_class": "import",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "201646",
+      "name": "3.1 设置",
+      "font_class": "set",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "397386",
+      "name": "icon-open",
+      "font_class": "caozuozhankai",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "5673786",
+      "name": "公式_计算",
+      "font_class": "fsux_tubiao_gongshi_jisuan",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "3851380",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "201552",
+      "name": "列表模式",
+      "font_class": "liebiaomoshi",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "688138",
+      "name": "源代码 下游代码",
+      "font_class": "yuandaimaxiayoudaima",
+      "unicode": "e7ae",
+      "unicode_decimal": 59310
+    },
+    {
+      "icon_id": "1635103",
+      "name": "02-保存",
+      "font_class": "-baocun",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "15214524",
+      "name": "json",
+      "font_class": "json",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "1279438",
+      "name": "链接",
+      "font_class": "lianjie",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "4922582",
+      "name": "还原",
+      "font_class": "restore",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "1117108",
+      "name": "paper",
+      "font_class": "paper",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "21583629",
+      "name": "展示中心",
+      "font_class": "zhanshizhongxin",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    }
+  ]
+}

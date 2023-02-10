@@ -5,7 +5,7 @@
 			icon="fsux_tubiao_gongshi_jisuan"
 			title="数学公式 mathjax"
 			v-on:iconMouswDown="$router.push(paths.index)" />
-			
+
 	</div>
 </template>
 
@@ -22,5 +22,6 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
+
 	}
 </style>
