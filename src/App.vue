@@ -27,7 +27,12 @@ html, body, #app {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+}
+html{
   font-size: 100px;
+}
+body{
+  font-size: 0.2rem;
 }
 div, svg, pre, textarea, input, iframe, span, img, p, canvas
 h1, h2, h3, h4, h5, h6 {
@@ -48,4 +53,19 @@ textarea, canvas, input{
 	text-overflow: ellipsis; //文本溢出显示省略号
 	white-space: nowrap; //文本不会换行
 }
+
+.hide_input_button{
+  font-size: 0;
+  outline: 0;
+  padding: 0;
+  border: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
 </style>

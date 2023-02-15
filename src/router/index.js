@@ -4,60 +4,32 @@ import getRoutes from './get_routes.js'
 
 Vue.use(VueRouter);
 
+export const paths = {
+	index: '/index',
+	texToImage: '/tex_to_image',
+	imageToBase64: '/image_to_base64',
+	codeParser: '/code_parser',
+}
+
 const routes = [
-
-	// 组件案例
-	{
-		path: '/components',
-		component: () => import('../components/components.vue'),
-		children: getRoutes([
-			// 自己写的组件
-			{
-				component: (path)=> ()=> import(`../components/${path}/example.vue`),
-				paths: ['scrollbar', 'context_menu', 'tree', 'message', 'side']
-			},
-			// element-ui 的组件
-			{
-				component: (path)=> ()=> import(`../components/${path}/index.vue`),
-				paths: ['element-ui.copy/color-picker', 'element-ui.copy/tree']
-			}
-		])
-	},
-
 
 	// 基本通过，可以对外进行展示
 	{
-		path: '/show_myself',
-		component: () => import('../views/show_myself/show_myself.vue'),
+		path: paths.index,
+		component: () => import('../views/index.vue'),
 	},
 	{
-		path: '/tex_to_image',//	图片格式的公式
-		component: () => import('../tools/mathjax/tex_to_image.vue'),
+		path: paths.texToImage,//	图片格式的公式
+		component: () => import('../views/tools/mathtex_to_image/mathtex_to_image.vue'),
 	},
 	{
-		path: '/image_to_base64',//	展示图片 base64
-		component: () => import('../tools/image/image_to_base64.vue'),
+		path: paths.imageToBase64,//	图片转 base64
+		component: () => import('../views/tools/image_to_base64.vue'),
 	},
 	{
-		path: '/glsl_to_js',// jlsl文件转化为js文件
-		component: () => import('../tools/deal_files/glsl_to_js.vue'),
+		path: paths.codeParser,//	图片转 base64
+		component: () => import('../views/tools/code_parser/code_parser.vue'),
 	},
-	{
-		path: '/learn_ast_node',//	学习 ast node 信息
-		component: () => import('../views/learn_ast_node/learn_ast_node.vue'),
-	},
-	{
-		path: '/paper',//	论文学习
-		component: () => import('../views/paper/paper.vue'),
-	},
-	{
-		path: '/code_document',// 	代码文档
-		component: () => import('../views/code_document/code_document.vue'),
-	},
-	{
-		path: '/learn_d3',//	d3 案例
-		component: () => import('../views/learn_d3/learn_d3.vue')
-	}
 ]
 
 const router = new VueRouter({
@@ -67,8 +39,8 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next)=>{
-	if( to.fullPath === '/' ){
-		next('/show_myself');
+	if( to.fullPath === '/'){
+		next(paths.index);
 	}else{
 		next();
 	}
