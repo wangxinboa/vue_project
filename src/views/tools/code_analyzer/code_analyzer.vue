@@ -1,13 +1,12 @@
 <template>
-	<div id="code_parser">
+	<div id="codeAnalyzer">
 		<v-header
 			class="header"
 			icon="yuandaimaxiayoudaima"
-			title="代码解析器"
-			v-on:iconMouswDown="$router.push(paths.index)" />
+			title="代码解析器" />
 		<div class="container">
 			<div class="code_files">
-
+				
 			</div>
 			<div class="">
 				
@@ -21,14 +20,14 @@
 	export default {
 		data(){
 			return {
-
+				
 			}
 		}
 	}
 </script>
 
 <style lang="less">
-	#code_parser{
+	#codeAnalyzer{
 		display: flex;
 		flex-direction: column;
 		width: 100%;

@@ -3,7 +3,8 @@
 		<v-header
 			class="header"
 			icon="zhanshizhongxin"
-			title="个人展示中心"/>
+			title="个人展示中心"
+			:isToIndex="false"/>
 		<div class="main show_data">
 			<div class="data"
 				v-for="data in showData">
@@ -27,7 +28,6 @@
 
 <script>
 	import router, { paths } from '@/router/index.js';
-	// import data from './'
 
 	export default {
 		data(){
@@ -36,7 +36,7 @@
 					{
 						type: '工具',
 						items: [
-							{ title: '代码解析器', path: paths.codeParser },
+							{ title: '代码分析器', path: paths.codeAnalyzer },
 							{ title: '数学公式 mathjax', path: paths.texToImage },
 							{ title: '图片转换 base64', path: paths.imageToBase64 },
 						]

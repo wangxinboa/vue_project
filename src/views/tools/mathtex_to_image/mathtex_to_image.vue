@@ -1,10 +1,9 @@
 <template>
-	<div id="mathtex_to_image">
+	<div id="mathtexToImage">
 		<v-header
 			class="header"
 			icon="fsux_tubiao_gongshi_jisuan"
-			title="数学公式 mathjax"
-			v-on:iconMouswDown="$router.push(paths.index)" />
+			title="数学公式 mathjax" />
 		<div class="container">
 			<textarea class="tex_text_area"
 				ref="textarea"
@@ -43,7 +42,7 @@
 </script>
 
 <style lang="less">
-	#mathtex_to_image{
+	#mathtexToImage{
 		display: flex;
 		flex-direction: column;
 		width: 100%;

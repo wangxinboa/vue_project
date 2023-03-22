@@ -7,6 +7,8 @@ import Header from '@components/views/header.vue';
 
 import './assets/iconfont/iconfont.css';
 
+import './default_css.less';
+
 Vue.config.productionTip = false;
 
 Vue.component('v-header', Header);

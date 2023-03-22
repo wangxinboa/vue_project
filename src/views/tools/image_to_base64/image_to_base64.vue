@@ -1,10 +1,9 @@
 <template>
-	<div id="image_to_base64">
+	<div id="imageToBase64">
 		<v-header
 			class="header"
 			icon="tupian"
-			title="图片转换 base64"
-			v-on:iconMouswDown="$router.push(paths.index)" />
+			title="图片转换 base64"/>
 			
 		<div class="operation">
 			<div class="button prevent_text_overflow import">
@@ -68,7 +67,7 @@
 </script>
 
 <style lang="less">
-	#image_to_base64{
+	#imageToBase64{
 		width: 100%;
 		height: 100%;
 		display: flex;

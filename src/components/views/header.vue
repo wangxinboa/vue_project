@@ -4,9 +4,9 @@
 			v-if="icon"
 			:class="'iconfont icon-' + icon"
 			:style="{
-				cursor: $listeners['iconMouswDown'] ? 'pointer': null
+				cursor: isToIndex ? 'pointer': null
 			}"
-			v-on:mousedown="$emit('iconMouswDown')"></div>
+			v-on:mousedown="iconMouswDown"></div>
 		<div class="title">{{title}}</div>
 	</div>
 </template>
@@ -21,6 +21,17 @@
 			title: {
 				type: String,
 				default: '请输入标题'
+			},
+			isToIndex: {
+				type: Boolean,
+				default: true
+			}
+		},
+		methods: {
+			iconMouswDown(){
+				if( this.isToIndex ){
+					this.$router.push(this.paths.index);
+				}
 			}
 		}
 	}

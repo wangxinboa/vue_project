@@ -6,6 +6,20 @@
   "description": "https://github.com/officialBusiness/vue_project",
   "glyphs": [
     {
+      "icon_id": "15214514",
+      "name": "css",
+      "font_class": "css",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "8039223",
+      "name": "图片",
+      "font_class": "tupian1",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
       "icon_id": "4862242",
       "name": "关闭",
       "font_class": "guanbi",

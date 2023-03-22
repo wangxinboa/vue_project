@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import getRoutes from './get_routes.js'
 
 Vue.use(VueRouter);
 
@@ -8,7 +7,7 @@ export const paths = {
 	index: '/index',
 	texToImage: '/tex_to_image',
 	imageToBase64: '/image_to_base64',
-	codeParser: '/code_parser',
+	codeAnalyzer: '/code_analyzer'
 }
 
 const routes = [
@@ -24,12 +23,14 @@ const routes = [
 	},
 	{
 		path: paths.imageToBase64,//	图片转 base64
-		component: () => import('../views/tools/image_to_base64.vue'),
+		component: () => import('../views/tools/image_to_base64/image_to_base64.vue'),
 	},
 	{
-		path: paths.codeParser,//	图片转 base64
-		component: () => import('../views/tools/code_parser/code_parser.vue'),
+		path: paths.codeAnalyzer,//	图片转 base64
+		component: () => import('../views/tools/code_analyzer/code_analyzer.vue'),
 	},
+
+
 ]
 
 const router = new VueRouter({
@@ -39,7 +40,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next)=>{
-	if( to.fullPath === '/'){
+	if( to.fullPath === '/' ){
 		next(paths.index);
 	}else{
 		next();
