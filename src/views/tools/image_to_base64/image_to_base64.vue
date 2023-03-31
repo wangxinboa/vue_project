@@ -107,6 +107,7 @@
 			width: 5rem;
 			max-width: calc(100% - 0.4rem);
 			height: 2rem;
+			min-height: 2rem;
 			border-width: 0.02rem;
 			border-style: dashed;
 			border-color: #434343;
@@ -122,6 +123,7 @@
 			padding: 0.2rem 0;
 			flex: 1;
 			width: 5rem;
+			min-height: 1rem;
 			max-width: calc(100% - 0.4rem);
 			overflow: auto;
 			font-size: 0.14rem;

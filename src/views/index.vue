@@ -85,7 +85,7 @@
 			width: 100%;
 			height: 0;
 			flex: 1;
-			overflow-y: auto;
+			overflow: auto;
 			>.data{
 				padding: 0.1rem;
 				width: 100%;

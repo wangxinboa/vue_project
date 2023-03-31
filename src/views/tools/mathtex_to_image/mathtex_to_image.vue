@@ -60,6 +60,7 @@
 				padding: 0.1rem;
 				width: 100%;
 				height: 1.68rem;
+				min-height: 1.68rem;
 				resize: none;
 				border-width: 0.02rem;
 				border-style: dashed;
@@ -70,6 +71,7 @@
 			>.image{
 				padding: 0.2rem 0.1rem;
 				width: 100%;
+				min-height: 0.6rem;
 				overflow: auto;
 				>img{
 					display: block;
@@ -79,6 +81,7 @@
 			>.base64{
 				flex: 1;
 				width: 100%;
+				min-height: 1rem;
 				resize: none;
 			}
 		}
