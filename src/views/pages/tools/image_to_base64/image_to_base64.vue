@@ -1,32 +1,35 @@
 <template>
-	<div id="imageToBase64">
-		<v-header
-			class="header"
-			icon="tupian"
-			title="图片转换 base64"/>
-			
-		<div class="operation">
-			<div class="button prevent_text_overflow import">
-				导入图片
-				<input class="hide_input_button" type="file" name=""
-					v-on:change="readImageFile">
+	<v-page
+		icon="tupian"
+		title="图片转换 base64">
+	<template #content>
+		<div id="imageToBase64">
+			<div class="operation">
+				<div class="button prevent_text_overflow import">
+					导入图片
+					<input class="hide_input_button" type="file" name=""
+						v-on:change="readImageFile">
+				</div>
+				<div class="button prevent_text_overflow copy"
+					v-on:mousedown="copyBase64">复制 base64</div>
 			</div>
-			<div class="button prevent_text_overflow copy"
-				v-on:mousedown="copyBase64">复制 base64</div>
-		</div>
+			
+			<div class="image"
+				v-on:dragstart.prevent
+				v-on:dragover.prevent
+				v-on:drop.prevent='dropImageFile'>
+				<img :src="base64" v-if="base64">
+			</div>
 
-		<div class="image"
-			v-on:dragstart.prevent
-			v-on:dragover.prevent
-			v-on:drop.prevent='dropImageFile'>
-			<img :src="base64" v-if="base64">
-		</div>
+			<div class="base64_container">
+				<textarea class="base64" ref="base64" readonly></textarea>
+			</div>
 
-		<div class="base64_container">
-			<textarea class="base64" ref="base64" readonly></textarea>
 		</div>
-	</div>
+  </template>
+	</v-page>
 </template>
+
 
 <script>
 	export default {
@@ -66,6 +69,7 @@
 	}
 </script>
 
+
 <style lang="less">
 	#imageToBase64{
 		width: 100%;
@@ -76,7 +80,7 @@
 		>.operation{
 			display: flex;
 			flex-direction: row;
-			padding: 0.2rem 0.4rem;
+			padding: 0.2rem;
 			>.button{
 				padding: 0.1rem 0.18rem;
 				margin-right: 0.1rem;
@@ -87,10 +91,17 @@
 				font-size: 0.14rem;
 
 				cursor: pointer;
-				transition: background-color .3s;
+				transition: background-color .3s, border-color .3s,  box-shadow .3s;
 			}
 			>.button:hover{
-				background-color: #e5e5e5;
+				border-color: rgba(0, 0, 0, 0.15);
+				box-shadow: rgba(0, 0, 0, 0.1) 0 0.04rem 0.12rem;
+
+			}
+			>.button:active{
+			  background-color: #F0F0F1;
+			  border-color: rgba(0, 0, 0, 0.15);
+			  box-shadow: rgba(0, 0, 0, 0.06) 0 0.02rem 0.04rem;
 			}
 			>.import{
 				position: relative;
@@ -114,6 +125,8 @@
 			border-radius: 0.04rem;
 			overflow: hidden;
 			>img{
+		    max-width: 100%;
+		    max-height: 100%;
 				object-fit: contain;
 			}
 		}
