@@ -33,9 +33,10 @@ html{
   font-size: 100px;
 }
 body{
+  position: relative;
   font-size: 0.2rem;
 }
-div, svg, pre, textarea, input, iframe, span, img, p, canvas
+div, svg, pre, textarea, input, iframe, img, p, canvas
 h1, h2, h3, h4, h5, h6 {
   display: block;
   margin: 0;

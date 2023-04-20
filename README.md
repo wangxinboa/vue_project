@@ -22,3 +22,7 @@
 * @babel/parser: 用于解析 javascript 代码，可将代码转化为 AST，[官网链接](https://babeljs.io/docs/en/babel-parser#babelparserparsecode-options)
 <!-- * d3: 用于实现数据可视化的js库，[官网链接](https://d3js.org/)
 * element-ui: 组件UI，用于参考和学习，[官网链接](https://element.eleme.cn/#/zh-CN) -->
+
+## 外部添加的第三方框架
+* [jszip](https://github.com/Stuk/jszip): 用于压缩文件到 zip 压缩包
+* [MathJax-src](https://github.com/mathjax/Mathjax-src/): 用于生成数学符号

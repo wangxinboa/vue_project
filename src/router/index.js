@@ -9,11 +9,10 @@ export const paths = {
 	imageToBase64: '/tools/image_to_base64',
 	codeAnalyzer: '/code_analyzer',
 
-	specAst: '/test/spec_ast',
+	learnAstSpec: '/test/learn_ast_spec',
 }
 
 const routes = [
-
 	// 基本通过，可以对外进行展示
 	{
 		path: paths.index,
@@ -33,8 +32,8 @@ const routes = [
 	},
 
 	{
-		path: paths.specAst,		//	代码解析工具
-		component: () => import('../test/spec_ast/spec_ast.vue'),
+		path: paths.learnAstSpec,		//	ast 规范学习
+		component: () => import('../test/learn_ast_spec/learn_ast_spec.vue'),
 	},
 
 
