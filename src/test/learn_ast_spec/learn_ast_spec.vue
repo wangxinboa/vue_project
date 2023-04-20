@@ -24,9 +24,7 @@
 	import * as babelParser from '@babel/parser';
 	import codeEditor from './code_editor/code_editor';
 	import dataJson from './data.json';
-	import * as T from './t.js';
-
-	console.log('T:', T);
+	
 
 	export default {
 		components: {
