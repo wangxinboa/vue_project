@@ -31,6 +31,7 @@
 		},
 		mounted(){
 			this.initAceEditor();
+			this.aceEditor.setValue(`let a = 12;`);
 		},
 		beforeDestroy(){
 			this.destroyAceEditor();

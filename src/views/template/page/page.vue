@@ -25,7 +25,7 @@
 			},
 			title: {
 				type: String,
-				default: '请输入标题'
+				default: '标题为空'
 			},
 			isToIndex: {
 				type: Boolean,
