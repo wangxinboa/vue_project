@@ -10,9 +10,20 @@ export const paths = {
 	codeAnalyzer: '/code_analyzer',
 
 	learnAstSpec: '/test/learn_ast_spec',
+	astGraph: '/test/ast_graph',
 }
 
 const routes = [
+	// 测试中
+	{
+		path: paths.learnAstSpec,		//	ast 规范学习
+		component: () => import('../test/learn_ast_spec/learn_ast_spec.vue'),
+	},
+	{
+		path: paths.astGraph,		//	ast 节点规范关系图
+		component: () => import('../test/ast_graph/ast_graph.vue'),
+	},
+
 	// 基本通过，可以对外进行展示
 	{
 		path: paths.index,
@@ -30,13 +41,6 @@ const routes = [
 		path: paths.codeAnalyzer,		//	代码解析工具
 		component: () => import('../views/pages/code_analyzer/code_analyzer.vue'),
 	},
-
-	{
-		path: paths.learnAstSpec,		//	ast 规范学习
-		component: () => import('../test/learn_ast_spec/learn_ast_spec.vue'),
-	},
-
-
 ]
 
 const router = new VueRouter({

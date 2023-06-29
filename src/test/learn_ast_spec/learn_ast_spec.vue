@@ -2,45 +2,65 @@
 	<v-page
 		icon="zhanshizhongxin"
 		title="ast 规范学习">
-	<template #content>
 		<div id="learnAstSpec">
+
 			<div class="ast_learn_node_list_container">
 				<v-astLearnNodeList
-					:astLearnGraph="astLG"/>
+					:astLearnGraph="astLG"
+					:astLearnNode="astLNAnalysed"
+					v-on:selectnode="analysisAstLN"
+					v-on:startaddnode="startAddAstLN"/>
 			</div>
-			<div class="arc_diagram">
-				
-			</div>
-			<div class="code_editor">
-				<v-codeEditor
-					v-on:capturecode="completeAstLearnGraph"
-					/>
-			</div>
+
+			<c-drawer
+				:visible="isAddAstLN"
+				:size="'10rem'"
+				:title="'学习新节点'"
+				v-on:open="startAddAstLN"
+				v-on:close="endAddAstLN"
+				>
+				<v-addAstLNode />
+			</c-drawer>
 		</div>
-	</template>
 	</v-page>
 </template>
 
 <script>
-	import astLearnNodeList from './learn_ast_massage/ast_learn_node_list';
-	import codeEditor from './code_editor/code_editor';
-	import AstLearnGraph from './ast_learn_graph/ast_learn_graph.js';
+	import VAstLearnNodeList from './learn_ast_massage/ast_learn_node_list';
+	import VAddAstLNode from './add_new/add_new_ast_learn_node';
 
+	import AstLearnGraph from './ast_learn_graph/ast_learn_graph.js';
 
 	export default {
 		components: {
-			"v-astLearnNodeList": astLearnNodeList,
-			"v-codeEditor": codeEditor,
+			"v-astLearnNodeList": VAstLearnNodeList,
+			"v-addAstLNode": VAddAstLNode,
 		},
 		data(){
 			return {
 				astLG: new AstLearnGraph(),
+				astLNAnalysed: null,
+
+				isAddAstLN: true,
 			}
 		},
 		methods: {
+			analysisAstLN(astLN){
+				console.log('astLN:', astLN ? astLN.type : astLN);
+				this.astLNAnalysed = astLN;
+			},
+			startAddAstLN(){
+				this.isAddAstLN = !this.isAddAstLN;
+			},
+			endAddAstLN(){
+				this.isAddAstLN = false;
+			},
 			completeAstLearnGraph(codeStr){
-				this.astLG.startComplete(codeStr);
-				console.log('astLG:', this.astLG);
+				if( this.astLNResolved ){
+
+				}else{
+					this.astLG.startComplete(codeStr);
+				}
 			},
 		}
 	}
@@ -55,17 +75,7 @@
 			width: 3rem;
 			height: 100%;
 			background-color: #262626;
-		}
-		>.arc_diagram{
-			width: 0;
-			flex: 1;
-			height: 100%;
-			background-color: yellow;
-		}
-		>.code_editor{
-			width: 0;
-			flex: 1;
-			height: 100%;
+			border-right: 0.01rem solid #5b5b5b;
 		}
 	}
 </style>

@@ -2,12 +2,11 @@
 	<v-page
 		icon="tupian"
 		title="图片转换 base64">
-	<template #content>
 		<div id="imageToBase64">
 			<div class="operation">
 				<div class="button prevent_text_overflow import">
 					导入图片
-					<input class="hide_input_button" type="file" name=""
+					<input class="hidden_input_button" type="file" name=""
 						v-on:change="readImageFile">
 				</div>
 				<div class="button prevent_text_overflow copy"
@@ -24,9 +23,7 @@
 			<div class="base64_container">
 				<textarea class="base64" ref="base64" readonly></textarea>
 			</div>
-
 		</div>
-  </template>
 	</v-page>
 </template>
 

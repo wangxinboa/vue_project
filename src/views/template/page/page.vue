@@ -1,6 +1,6 @@
 <template>
 	<div class="template-page">
-		<div class="header">
+		<div class="template-page-header">
 			<div
 				v-if="icon"
 				:class="'iconfont icon-' + icon"
@@ -10,8 +10,8 @@
 				v-on:mousedown="iconMouswDown"></div>
 			<div class="title">{{title}}</div>
 		</div>
-		<div class="content">
-			<slot name="content"></slot>
+		<div class="template-page-body">
+			<slot></slot>
 		</div>
 	</div>
 </template>
@@ -49,7 +49,7 @@
 		width: 100%;
 		height: 100%;
 		min-height: 0.5rem;
-		>.header{
+		>.template-page-header{
 			display: flex;
 			padding-left: 0.1rem;
 			width: 100%;
@@ -67,7 +67,7 @@
 				font-size: 0.14rem;
 			}
 		}
-		>.content{
+		>.template-page-body{
 			width: 100%;
 			height: 0;
 			flex: 1;

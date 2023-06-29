@@ -13,7 +13,7 @@ const SkipAstKey = {
 export default class AstLearnNode{
 	constructor(astType){
 		this.type = astType;
-		this.properties = []
+		this.properties = [];
 	}
 
 	findProperty(key){
@@ -68,7 +68,7 @@ export default class AstLearnNode{
 			if( ast.type === 'TemplateElement' && key === 'value' ){
 
 				this.getProperty(key)
-					.addPrimitive( '{ cooked: string | null; raw: string; }' );
+					.addObjectValue(val);
 
 			}else{
 				console.error(`节点中有未纳入规划的数据类型 ${ast.type}-${key}:`, this.type, val, ast);
@@ -93,7 +93,7 @@ export default class AstLearnNode{
 
 	}
 
-	toJson(){
+	toJSON(){
 
 	}
 

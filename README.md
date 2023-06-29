@@ -18,15 +18,11 @@
 * less-loader
 * vue-template-compiler
 
-## 添加的依赖
-<!-- * d3: 用于实现数据可视化的js库，[官网链接](https://d3js.org/)
-* element-ui: 组件UI，用于参考和学习，[官网链接](https://element.eleme.cn/#/zh-CN) -->
-
-## 内部添加的第三方框架
+## 内部添加(直接添加到代码中使用)的第三方框架
 * [@babel/parser](https://www.npmjs.com/package/@babel/parser): 用于将 javascript 代码转化为 ast 节点
 * [jszip](https://github.com/Stuk/jszip): 用于压缩文件到 zip 压缩包
 
-## 外部添加的第三方框架
+## 外部添加(index.html中添加全局使用)的第三方框架
 * [MathJax-src](https://github.com/mathjax/Mathjax-src/): 用于生成数学符号
 * [ace](https://github.com/ajaxorg/ace): 用于构建浏览器在线代码编辑器
 

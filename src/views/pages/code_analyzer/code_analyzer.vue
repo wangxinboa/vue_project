@@ -2,7 +2,6 @@
 	<v-page
 		icon="yuandaimaxiayoudaima"
 		title="代码解析器">
-	<template #content>
 		<div id="codeAnalyzer">
 			<div class="code_folders">
 
@@ -11,7 +10,6 @@
 				
 			</div>
 		</div>
-  </template>
 	</v-page>
 </template>
 
@@ -34,7 +32,6 @@
 		>.code_folders{
 			width: 3rem;
 			height: 100%;
-			background-color: red;
 		}
 		>.ace_container{
 

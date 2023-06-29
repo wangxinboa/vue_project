@@ -1,5 +1,5 @@
 <template>
-	<div class="ace_editor" ref="aceContainer"></div>
+	<div class="code_editor fill" ref="aceContainer"></div>
 </template>
 
 <script>
@@ -8,7 +8,7 @@
 			return {
 				aceEditor: null,
 				events: {
-					capturecode: 'capturecode',
+					onchange: 'onchange',
 				},
 			}
 		},
@@ -21,7 +21,7 @@
 				  wrap: true,
 				});
 				this.aceEditor.session.on('change', (delta)=>{
-					this.$emit(this.events.capturecode, this.aceEditor.getValue());
+					this.$emit(this.events.onchange, this.aceEditor.getValue());
 				});
 			},
 			destroyAceEditor(){
@@ -31,7 +31,7 @@
 		},
 		mounted(){
 			this.initAceEditor();
-			this.aceEditor.setValue(`let a = 12;`);
+			this.aceEditor.setValue(`let a = aa;`);
 		},
 		beforeDestroy(){
 			this.destroyAceEditor();
@@ -40,8 +40,7 @@
 </script>
 
 <style lang="less">
-	.ace_editor{
-		width: 100%;
-		height: 100%;
+	.code_editor{
+		
 	}
 </style>

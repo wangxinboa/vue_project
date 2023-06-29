@@ -2,11 +2,10 @@
 	<v-page
 		icon="fsux_tubiao_gongshi_jisuan"
 		title="数学公式 mathjax">
-	<template #content>
 		<div id="mathtexToImage">
 			<textarea class="tex_text_area"
 				ref="textarea"
-				v-on:input="texChange"></textarea>
+				v-on:input="texChangeDebounce"></textarea>
 
 			<div class="image">
 				<img :src="mathjaxBase64">
@@ -14,13 +13,13 @@
 
 			<textarea class="base64" ref="base64" readonly></textarea>
 		</div>
-  </template>
 	</v-page>
 </template>
 
 
 <script>
 	import { getBase64 } from './mathtex_to_image.js';
+	import debounce from '@utils/timer/debounce.js';
 
 	export default {
 		data(){
@@ -36,8 +35,10 @@
 		methods: {
 			texChange(){
 				this.mathjaxBase64 = this.$refs.base64.value = getBase64(this.$refs.textarea.value);
-
-			}
+			},
+			texChangeDebounce: debounce(function(){
+				this.texChange();
+			}, 1000),
 		}
 	}
 </script>

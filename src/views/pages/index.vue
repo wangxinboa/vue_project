@@ -3,8 +3,7 @@
 		icon="zhanshizhongxin"
 		title="个人展示中心"
 		:isToIndex="false">
-	<template #content>
-		<div id="show_myself">
+		<div id="showMyself">
 			<div class="data"
 				v-for="data in showData">
 				<div class="type">{{data.type}}</div>
@@ -15,13 +14,12 @@
 						<div class="item"
 							v-on:mousedown='toShow(item.path)'>
 							<!-- <div class=""></div> -->
-							<div class="title">{{item.title}}</div>
+							<div class="prevent_text_overflow title">{{item.title}}</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-  </template>
 	</v-page>
 </template>
 
@@ -32,13 +30,13 @@
 		data(){
 			return {
 				showData: [
-					{
-						type: '代码学习',
-						items: [
-							{ title: '代码分析器', path: paths.codeAnalyzer },
+					// {
+					// 	type: '代码学习',
+					// 	items: [
+					// 		{ title: '代码分析器', path: paths.codeAnalyzer },
 
-						]
-					},
+					// 	]
+					// },
 					{
 						type: '工具',
 						items: [
@@ -72,7 +70,7 @@
 
 
 <style lang="less">
-#show_myself{
+#showMyself{
 	padding: 0.1rem;
 	width: 100%;
 	height: 100%;
@@ -103,9 +101,6 @@
 						line-height: 0.5rem;
 						text-align: center;
 						font-size: 0.16rem;
-						white-space: nowrap; //文本强制不换行
-						text-overflow: ellipsis; //文本溢出显示省略号
-						overflow: hidden; //溢出的部分隐藏
 					}
 				}
 				>.item:hover{
