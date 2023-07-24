@@ -69,7 +69,7 @@
 		data(){
 			return {
 				event: {
-					open: 'open',
+					onopen: 'onopen',
 					close: 'close',
 				},
 			}
@@ -81,7 +81,7 @@
 		},
 		methods: {
 			onOpenDrawer(){
-				this.$emit(this.event.open);
+				this.$emit(this.event.onopen);
 			},
 			onCloseDrawer(){
 				this.$emit(this.event.close);

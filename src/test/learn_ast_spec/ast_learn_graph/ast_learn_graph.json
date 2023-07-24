@@ -1,1 +1,987 @@
-{}
+[
+    {
+        "type": "File",
+        "keyMsgs": [
+            {
+                "key": "program",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": false,
+                        "type": "Program"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "comments",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": false,
+                        "type": "CommentLine"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "Program",
+        "keyMsgs": [
+            {
+                "key": "sourceType",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": false,
+                        "data": "module"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Value"
+            },
+            {
+                "key": "interpreter",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "null"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "body",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "ImportDeclaration"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "ExportNamedDeclaration"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ImportDeclaration",
+        "keyMsgs": [
+            {
+                "key": "specifiers",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "ImportSpecifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "importKind",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "string"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "source",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "StringLiteral"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "leadingComments",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "CommentLine"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ImportSpecifier",
+        "keyMsgs": [
+            {
+                "key": "imported",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "importKind",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "null"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "local",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "Identifier",
+        "keyMsgs": [
+            {
+                "key": "name",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "string"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "range",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "undefined"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "StringLiteral",
+        "keyMsgs": [
+            {
+                "key": "value",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "string"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "CommentLine",
+        "keyMsgs": [
+            {
+                "key": "value",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "string"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ExportNamedDeclaration",
+        "keyMsgs": [
+            {
+                "key": "source",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "null"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "declaration",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "ClassDeclaration"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "exportKind",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "string"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ClassDeclaration",
+        "keyMsgs": [
+            {
+                "key": "id",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "superClass",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "body",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "ClassBody"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ClassBody",
+        "keyMsgs": [
+            {
+                "key": "body",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "ClassMethod"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ClassMethod",
+        "keyMsgs": [
+            {
+                "key": "static",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "boolean"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "key",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "computed",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "boolean"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "kind",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "string"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "id",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "null"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "generator",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "boolean"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "async",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "boolean"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "params",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "body",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "BlockStatement"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "BlockStatement",
+        "keyMsgs": [
+            {
+                "key": "body",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "VariableDeclaration"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "ExpressionStatement"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "ReturnStatement"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "VariableDeclaration",
+        "keyMsgs": [
+            {
+                "key": "declarations",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "VariableDeclarator"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "kind",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "string"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "trailingComments",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "CommentLine"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "leadingComments",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "CommentLine"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "VariableDeclarator",
+        "keyMsgs": [
+            {
+                "key": "id",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "init",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "NewExpression"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "CallExpression"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "NumericLiteral"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "BinaryExpression"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "NewExpression",
+        "keyMsgs": [
+            {
+                "key": "callee",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "typeArguments",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "null"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "arguments",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "NumericLiteral"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "CallExpression"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "BinaryExpression"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "CallExpression",
+        "keyMsgs": [
+            {
+                "key": "callee",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "MemberExpression"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "arguments",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "BinaryExpression"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "NumericLiteral"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "BooleanLiteral"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "StringLiteral"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ExpressionStatement",
+        "keyMsgs": [
+            {
+                "key": "expression",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "CallExpression"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "trailingComments",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "CommentLine"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "MemberExpression",
+        "keyMsgs": [
+            {
+                "key": "object",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "computed",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "boolean"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "property",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "BinaryExpression",
+        "keyMsgs": [
+            {
+                "key": "left",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "BinaryExpression"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "operator",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "string"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "right",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "StringLiteral"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "NumericLiteral"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "MemberExpression"
+                    },
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "NumericLiteral",
+        "keyMsgs": [
+            {
+                "key": "value",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "number"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "BooleanLiteral",
+        "keyMsgs": [
+            {
+                "key": "value",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "boolean"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ReturnStatement",
+        "keyMsgs": [
+            {
+                "key": "argument",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "ObjectExpression"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ObjectExpression",
+        "keyMsgs": [
+            {
+                "key": "properties",
+                "isArray": true,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "ObjectProperty"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    },
+    {
+        "type": "ObjectProperty",
+        "keyMsgs": [
+            {
+                "key": "method",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "boolean"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "key",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "computed",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "boolean"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "shorthand",
+                "isArray": false,
+                "valueType": "Simple",
+                "value": [
+                    {
+                        "isNew": true,
+                        "data": "boolean"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            },
+            {
+                "key": "value",
+                "isArray": false,
+                "valueType": "Ast",
+                "value": [
+                    {
+                        "isNew": true,
+                        "type": "Identifier"
+                    }
+                ],
+                "codeTemplate": [],
+                "SimpleDataType": "Type"
+            }
+        ]
+    }
+]

@@ -30,7 +30,7 @@
 				// console.log('codeStr:', codeStr);
 				this.astLearnGraph.startComplete(codeStr);
 				// console.log('astLearnGraph:', this.astLearnGraph);
-				// console.log('dagre:', JSON.stringify(this.astLearnGraph.toDagreJSON(), null, 4));
+				console.log('dagre:', JSON.stringify(this.astLearnGraph.toDagreJSON(), null, 4));
 				// console.log('WebCola:', JSON.stringify(this.astLearnGraph.toWebColaJSON(), null, 4));
 			}
 		}

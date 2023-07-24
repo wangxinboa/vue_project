@@ -6,16 +6,18 @@
 		<div class="code_ast_node_content">
 			<c-tree
 				:treeData="astNode"
+				:dataType="'jsonType'"
 				:label="getLabel"
 				:children="getChildren"
-				:getParentMsg="getParentMsg"
+				:defaultExpand="false"
+				:excludeKeys="['start', 'end', 'loc']"
 				/>
 		</div>
 	</div>
 </template>
 
 <script>
-	import { isJsAst } from '../../utils.js';
+	import { isAstNode } from '../../utils.js';
 
 	export default {
 		props: {
@@ -24,24 +26,16 @@
 				default: null
 			}
 		},
-		data(){
-			return {
-				t: [{label: '1', children: [{label: '1-1'}]}, {label: '2'}],
-			}
-		},
 		methods: {
-			getParentMsg(parentNode, childNode, keyName){
-				return keyName;
-			},
-			getLabel(node, parentMsg){
+			getLabel(node, keyName){
 				let label;
 
-				if( isJsAst(node) ){
+				if( isAstNode(node) ){
 					label = node.type;
 				}else if( typeof node === 'object' && node !== null){
-					label = parentMsg;
+					label = keyName;
 				}else{
-					label = `${parentMsg}: ${node}`;
+					label = `${keyName}: ${node}`;
 				}
 				return label;
 			},
@@ -50,9 +44,6 @@
 			}
 		},
 		mounted(){
-			setTimeout(()=>{
-				this.t[0].label = '111';
-			}, 3000);
 		}
 	}
 </script>
@@ -71,6 +62,7 @@
 			width: 100%;
 			height: 0;
 			flex: 1;
+			overflow: auto;
 		}
 	}
 </style>

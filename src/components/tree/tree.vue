@@ -1,25 +1,42 @@
 <template>
 	<div class="component-tree">
-		<div class="component-ast-node-container">
-			<c-tree-node
+		<div
+			v-if="dataType === jsonType"
+			class="component-ast-node-container">
+			<c-json-node
 				v-if="treeData"
 				v-for="(child, keyName) in treeData"
 				:key="keyName"
+				:defaultExpand="defaultExpand"
 				:nodeData="child"
-				:parentMsg="getParentMsg(treeData, child, keyName)"
+				:excludeKeys="excludeKeys"
 				/>
+		</div>
+		<div
+			v-else-if="dataType === treeData"
+			class="component-ast-node-container">
+			待完善
+		</div>
+		<div
+			v-else="dataType === treeData"
+			class="component-ast-node-container">
+			数据类型错误
 		</div>
 	</div>
 </template>
 
 <script>
-	import treeNode from './tree_node.vue';
+	import jsonNode from './json_node.vue';
 
 	export default {
 		components: {
-			'c-tree-node': treeNode,
+			'c-json-node': jsonNode,
 		},
 		props: {
+			dataType: {
+				type: String,
+				default: 'tree'
+			},
 			treeData: {
 				type: Array,
 			},
@@ -35,15 +52,33 @@
 				type: [String, Function],
 				default: 'label',
 			},
-			getParentMsg: {
-				type: Function,
-				default: function(){
-					return null
-				},
+			defaultExpand: {
+				type: Boolean,
+				default: false,
 			},
+			// json
+			excludeKeys: {
+				type: Array,
+				default(){
+					return [];
+				},
+			}
+
+			// tree
+
+		},
+		data(){
+			return {
+				events: {
+					selectNode: 'selectNode',
+				},
+				jsonType: 'jsonType',
+				treeType: 'treeType',
+			}
 		},
 		provide(){
 			return {
+				selectNode: this.selectNode,
 				getChildren: this.getChildren,
 				getLabel: this.getLabel,
 				getParentMsg: this.getParentMsg,
@@ -64,6 +99,11 @@
 					return this.label(node, parentMsg);
 				}
 			},
+
+			selectNode(node){
+				this.$emit(this.events.selectNode, node);
+			},
+
 		},
 		mounted(){
 			// console.log(this.treeData);
@@ -73,8 +113,59 @@
 
 <style lang="less">
 	.component-tree{
-		width: 100%;
-		height: 100%;
+		width: fit-content;
+    min-width: 100%;
+    height: fit-content;
+    max-height: 100%;
 		overflow: auto;
+		background-color: #191919;
+		.component-tree-node{
+			>.node-content{
+				position: relative;
+				padding: 0 0.1rem 0 0;
+				display: flex;
+				line-height: 0.18rem;
+				font-size: 0.14rem;
+		    color: #ffffff;
+				transition: background-color .3s, height .3s;
+		    cursor: pointer;
+		    overflow: hidden;
+				border-bottom: 0.04rem solid rgba(0,0,0,0);
+				border-top: 0.04rem solid rgba(0,0,0,0);
+		    >.expand{
+		    	width: 0.18rem;
+		    	height: 0.18rem;
+			    text-align: center;
+			    overflow: hidden;
+	        transition: transform .3s ease-in-out, opacity .3s ease-in-out, width .3s;
+		    }
+		    >.expand.expanded{
+			    transform: rotate(90deg);
+		    }
+		    >.expand.leaf{
+		    	opacity: 0;
+		    	pointer-events: none;
+		    }
+		    >.label{
+			    text-align: left;
+			    white-space: nowrap;
+		    }
+
+		    &:hover{
+		    	background-color: #333333;
+			    >.btns{
+			    	opacity: 1;
+			    	background-color: #333333;
+			    }
+		    }
+			}
+			>.node-children{
+				margin: 0 0 0 0.16rem;
+				transition: height .3s;
+		    border-left: 0.01rem solid #666666;
+		    overflow-y: hidden;
+		    overflow-x: initial;
+			}
+		}
 	}
 </style>

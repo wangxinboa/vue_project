@@ -33,29 +33,34 @@ export function jsCodeStrToAst(codeStr){
 							]
 						});
 	}catch(e){
-		console.error('解析代码失败:', e);
+		console.error('解析代码失败:', e, codeStr);
 		return null;
 	}
 }
 
-export function isJsAst(jsData){
-	return jsData instanceof Node || (jsData instanceof Object && typeof jsData.type === 'string');
+export function isAstNode(data){
+	if(  data instanceof Node ){
+		return true;
+	}else if( data instanceof Object && typeof data.type === 'string' ) {
+		if( ( data.type === 'CommentLine' || data.type === 'CommentBlock' ) ){
+			return true;
+		}else{
+			throw new Error(`isAstNode 函数 ast 节点判断，遇到特殊节点: ${JSON.stringify(data, null, 4)}`);
+		}
+	}else{
+
+		return false;
+	}
 }
 
-export function traverseAst(callback, ast, parentAst, key){
+export function isReference(data){
+	return data instanceof Object;
+}
 
-	callback(ast, parentAst, key);
-
-	for(let key in ast){
-		let value = ast[key];
-		if( Array.isArray(value) ){
-			value.forEach((item)=>{
-				if( isJsAst(item) ){
-					traverseAst(callback, item, ast, key);
-				}
-			});
-		}else if( isJsAst(value) ){
-			traverseAst(callback, value, ast, key);
-		}
-	}
+export function isSampleData(data){
+	let dataType = typeof data;
+	return dataType === 'number' ||
+					dataType === 'string' ||
+					dataType === 'boolean' ||
+					data === void 0 || data === null;
 }

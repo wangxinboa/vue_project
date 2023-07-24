@@ -14,6 +14,11 @@ module.exports = {
         'd3': path.resolve(__dirname, 'src/third_party/d3/d3.7.8.5.js'),
       }
     }
-  }
+  },
+  // devServer: {
+  //   proxy: {
+  //     ws: false
+  //   }
+  // }
 	
 };
