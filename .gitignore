@@ -22,5 +22,4 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-/src.old
-/src.t
+# /src.old

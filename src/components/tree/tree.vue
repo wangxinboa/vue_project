@@ -27,10 +27,12 @@
 
 <script>
 	import jsonNode from './json_node.vue';
+	// import treeNode from './tree_node.vue';
 
 	export default {
 		components: {
 			'c-json-node': jsonNode,
+			// 'c-tree-node': treeNode,
 		},
 		props: {
 			dataType: {

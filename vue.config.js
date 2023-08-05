@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 
 module.exports = {
   publicPath: './',
@@ -13,7 +14,10 @@ module.exports = {
         '@babel/parser': path.resolve(__dirname, 'src/third_party/@babel/parser.js'),
         'd3': path.resolve(__dirname, 'src/third_party/d3/d3.7.8.5.js'),
       }
-    }
+    },
+    plugins: [
+      new MonacoWebpackPlugin(), // 解决 monaco-editor 报错问题 
+    ]
   },
   // devServer: {
   //   proxy: {

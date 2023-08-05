@@ -11,10 +11,15 @@ export const paths = {
 
 	learnAstSpec: '/test/learn_ast_spec',
 	astGraph: '/test/ast_graph',
+	diffFiles: '/test/diff_files'
 }
 
 const routes = [
 	// 测试中
+	{
+		path: paths.diffFiles,		//	代码文件对比
+		component: () => import('../test/diff_files/diff_files.vue'),
+	},
 	{
 		path: paths.learnAstSpec,		//	ast 规范学习
 		component: () => import('../test/learn_ast_spec/learn_ast_spec.vue'),
