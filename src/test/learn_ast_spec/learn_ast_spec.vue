@@ -88,8 +88,8 @@
 				this.showAstLNodes = this.astLG.nodes;
 			},
 			exportAstLG(){
-				console.log('this.astLG:', this.astLG);
-				console.log(JSON.stringify(this.astLG, null, 4));
+				// console.log('this.astLG:', this.astLG);
+				// console.log(JSON.stringify(this.astLG, null, 4));
 			},
 
 			addAstLN(codeStr){

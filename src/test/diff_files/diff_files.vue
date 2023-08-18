@@ -16,7 +16,13 @@
 					v-on:mousedown="newToOld">newToOld</div>
 			</div>
 			<div class="files_tree-content">
-				
+				<c-tree
+					dataType="treeType"
+					:treeData="diffFiles.finalFiles"
+					:label="getLabel"
+					:children="getChildren"
+					v-on:selectNode="diffFiles.diff"
+					/>
 			</div>
 		</div>
 		<div class="file_code"
@@ -41,24 +47,34 @@
 		},
 		methods: {
 			importOldFiles(e){
-				// let files = e.target.files;
-				// this.diffFiles.importOldFiles(e.target.files);
+				this.diffFiles.importOldFiles(e.target.files);
 			},
 			importNewFiles(e){
-				// let files = e.target.files;
-				// this.diffFiles.importNewFiles(e.target.files);
+				this.diffFiles.importNewFiles(e.target.files);
 			},
 			newToOld(){
 
+			},
+			getChildren(node){
+				// return node.folder
+				if( node && node.folders && node.files ){
+					return node.folders.concat(node.files);
+				}
+				return []
+			},
+			getLabel(node){
+				if( node ){
+					return `${node.name} ${node.type}`;
+				}
+				return '';
 			}
 		},
 		mounted(){
 			this.diffFiles.initMonacoEditor(this.$refs.editorContainer);
 		},
 		beforeDestroy(){
-			console.log('mounted');
+			console.log('beforeDestroy');
 		}
-
 	}
 </script>
 

@@ -14,7 +14,6 @@
 		<div class="node-children"
 			v-if="childrenShow && !isLeaf"
 			ref="children">
-
 			<c-json-node
 				v-for="(child, keyName) in children"
 				v-if="!excludeKeys.includes(keyName)"
@@ -24,13 +23,12 @@
 				:defaultExpand="defaultExpand"
 				:excludeKeys="excludeKeys"
 				/>
-
 		</div>
 	</div>
 </template>
 
 <script>
-	import { showChildren, hideChildren } from './utils';
+	import { showChildren, hideChildren } from './utils.js';
 
 	export default {
 		name: 'c-json-node',
@@ -50,7 +48,7 @@
 		},
 		inject: ['getChildren', 'getLabel', 'getParentMsg', 'selectNode'],
 		watch: {
-			nodeData(oldVal, newVal){
+			nodeData(newVal, oldVal){
 				this.children = this.getChildren(this.nodeData, this.keyName)
 				this.isLeaf = this.getIsLeaf(this.children)
 			}

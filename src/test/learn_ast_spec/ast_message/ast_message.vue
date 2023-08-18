@@ -3,9 +3,9 @@
 		<div class="code_ast">
 
 			<div class="code_ast_header">
-<!-- 				<div class="btn icon-btn icon-json"
+				<div class="btn icon-btn icon-json"
 					title="ast 展示"
-					v-on:mousedown="changeAstShowType"></div> -->
+					v-on:mousedown="changeAstShowType"></div>
 				<div class="btn icon-btn icon-jiexi"
 					title="解析代码为 ast 节点"
 					v-on:mousedown="codeStrToAst"></div>
@@ -62,7 +62,6 @@
 		watch: {
 			astNodes(newVal){
 				this.handleSelectNode(newVal[0]);
-
 			},
 			codeStr(newVal, oldVal){
 				// console.log('newVal:', newVal);
@@ -102,8 +101,8 @@
 			},
 
 			codeStrToAst(){
-				// let code = this.$refs.codeEditor.getValue(),
-				// 		astNode = this.astLG.startComplete(code);
+				let code = this.$refs.codeEditor.getValue(),
+						astNode = this.astLG.startComplete(code);
 
 				// this.astNodes = [astNode];
 				// this.astJSON = JSON.stringify(astNode, null, 4);

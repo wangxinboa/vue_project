@@ -1,38 +1,40 @@
 <template>
 	<div class="component-tree">
-		<div
-			v-if="dataType === jsonType"
+		<div v-if="dataType === jsonType && treeData"
 			class="component-ast-node-container">
 			<c-json-node
-				v-if="treeData"
-				v-for="(child, keyName) in treeData"
+				v-for="(child, keyName) in childrenData"
 				:key="keyName"
+				:keyName="keyName"
 				:defaultExpand="defaultExpand"
 				:nodeData="child"
 				:excludeKeys="excludeKeys"
 				/>
 		</div>
-		<div
-			v-else-if="dataType === treeData"
+		<div v-else-if="dataType === treeType && treeData"
 			class="component-ast-node-container">
-			待完善
+			<c-tree-node
+				v-for="(child, index) in childrenData"
+				:key="index"
+				:defaultExpand="defaultExpand"
+				:nodeData="child"
+				/>
 		</div>
-		<div
-			v-else="dataType === treeData"
+		<div v-else
 			class="component-ast-node-container">
-			数据类型错误
+			
 		</div>
 	</div>
 </template>
 
 <script>
 	import jsonNode from './json_node.vue';
-	// import treeNode from './tree_node.vue';
+	import treeNode from './tree_node.vue';
 
 	export default {
 		components: {
 			'c-json-node': jsonNode,
-			// 'c-tree-node': treeNode,
+			'c-tree-node': treeNode,
 		},
 		props: {
 			dataType: {
@@ -40,7 +42,7 @@
 				default: 'tree'
 			},
 			treeData: {
-				type: Array,
+				type: [Array, Object],
 			},
 			rootGetChildren: {
 				type: Boolean,
@@ -65,17 +67,22 @@
 					return [];
 				},
 			}
-
-			// tree
-
 		},
 		data(){
+			let childrenData = this.getChildren(this.treeData);
 			return {
 				events: {
 					selectNode: 'selectNode',
 				},
 				jsonType: 'jsonType',
 				treeType: 'treeType',
+
+				childrenData,
+			}
+		},
+		watch: {
+			treeData(newVal, oldVal){
+				this.childrenData = this.getChildren(newVal);
 			}
 		},
 		provide(){
@@ -101,7 +108,6 @@
 					return this.label(node, parentMsg);
 				}
 			},
-
 			selectNode(node){
 				this.$emit(this.events.selectNode, node);
 			},
@@ -117,7 +123,9 @@
 	.component-tree{
 		width: fit-content;
     min-width: 100%;
+    max-height: 100%;
     height: fit-content;
+    min-height: 100%;
     max-height: 100%;
 		overflow: auto;
 		background-color: #191919;

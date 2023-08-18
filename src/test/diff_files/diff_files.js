@@ -1,35 +1,13 @@
 import * as monaco from "monaco-editor";
-import { Folder, File } from './folder_struct/folder.js';
-
-// export default class DiffFiles{
-// 	constructor(){
-// 		this.oldFiles = null;
-// 		this.NewFiles = null;
-// 	}
-
-// 	importOldFiles(files){
-// 		this.oldFiles = getFileTreeByFolder(files);
-// 		console.log('oldFiles', JSON.stringify(this.oldFiles, null, 4));
-// 	}
-
-// 	importNewFiles(files){
-// 		this.NewFiles = getFileTreeByFolder(files);
-// 		console.log('NewFiles', JSON.stringify(this.NewFiles, null, 4));
-// 	}
-
-// 	initEditor(editorContainer){
-
-// 	}
-
-
-
-// }
+import { Folder, File, getFileTreeByFolder } from './folder_struct/folder.js';
+import { checkFolder } from './folder_struct/check_folder.js';
 
 export default function diffFiles(){
 	let editor = null,
-			language = 'javascript',
-			originalModel = monaco.editor.createModel('123', language),
-			modifiedModel = monaco.editor.createModel('321', language);
+			defaultLanguage = 'javascript';
+			// originalModel = monaco.editor.createModel('', defaultLanguage),
+			// modifiedModel = monaco.editor.createModel('', defaultLanguage);
+
 	return {
 		initMonacoEditor(containerDom){
 			editor = monaco.editor.createDiffEditor(containerDom, {
@@ -43,64 +21,75 @@ export default function diffFiles(){
 	      originalEditable: true,
 	    });
 	    editor.setModel({
-	      original: originalModel,
-	      modified: modifiedModel,
+	      original: monaco.editor.createModel('', defaultLanguage),
+	      modified: monaco.editor.createModel('', defaultLanguage),
 	    });
 		},
-
-		setCode(oldStr, newStr){
-
+		destory(){
+			editor.dispose();
+			editor = null;
 		},
 
-		destory(){
-			diffEditor.dispose()
-		}
-	}
-}
+		oldFiles: null,
+		newFiles: null,
+		finalFiles: null,
+		importOldFiles(files){
+			this.oldFiles = getFileTreeByFolder(files);
+			if( this.newFiles ){
+				this.finalFiles = checkFolder(this.oldFiles, this.newFiles);
+			}
+		},
+		importNewFiles(files){
+			if( this.newFiles ){
+				this.oldFiles = this.newFiles;
+			}
+			this.newFiles = getFileTreeByFolder(files);
+			if( this.oldFiles ){
+				this.finalFiles = checkFolder(this.oldFiles, this.newFiles);
+			}
+		},
+		diff(file){
+			// console.log('diff:', file);
+			if( file.isCheckFile ){
+				let readerOld = new FileReader(),
+						rederNew = new FileReader(),
+						oldStr = '', newStr = '',
+						oldRead = false, newRead = false;
 
+				if( file.oldFile ){
+					file.oldFile.read((result)=>{
+						oldStr = result;
+						oldRead = true;
 
-export function getFileTreeByFolder(files){
+						if( oldRead && newRead ){
 
-	// 将 files 信息转化为 tree
-	let	filesTree = null,
-			folderOrders = {};
+					    editor.setModel({
+					      original: monaco.editor.createModel(oldStr, defaultLanguage),
+					      modified: monaco.editor.createModel(newStr, defaultLanguage),
+					    });
+						}
+					});
+				}else{
+					oldRead = true;
+				}
 
-	for( let i = 0; i < files.length; i++ ){
-		let file = files[i],
-				path = file.webkitRelativePath.split("/"),
-				parentFolde;
+				if( file.newFile ){
+					file.newFile.read((result)=>{
+						newStr = result;
+						newRead = true;
 
-		path.forEach((name, level, array)=>{
-			if( level === array.length - 1 ){//	是文件
+						if( oldRead && newRead ){
 
-				let fileNode = new File(name, file);
-
-				parentFolde.addFile(fileNode);
-
-			}else{//	是文件夹
-				if( level === 0 ){//	是上传的根文件夹
-
-					if( !filesTree ){
-						filesTree = new Folder(name);
-					}
-					parentFolde = filesTree;
-
-				}else{//	是文件夹
-					if( parentFolde.hasFolder(name) ){// 还未存在
-
-						parentFolde = parentFolde.getFolder(name);
-					}else{
-
-						let folderNode = new Folder(name);
-
-						parentFolde.addFolder(folderNode);
-						parentFolde = folderNode;
-					}
+					    editor.setModel({
+					      original: monaco.editor.createModel(oldStr, defaultLanguage),
+					      modified: monaco.editor.createModel(newStr, defaultLanguage),
+					    });
+						}
+					});
+				}else{
+					newRead = true;
 				}
 			}
-
-		});
+		}
 	}
-
-	return filesTree;
 }

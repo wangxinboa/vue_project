@@ -6,12 +6,15 @@ export default class TreeStruct{
 		this.children = [];
 	}
 
-	addChildren(data){
-
+	addChildren(childrenData){
+		childrenData.forEach((childData)=>{
+			this.children.push(new TreeStruct(childData));
+		});
 	}
 
 	dispose(){
 		this.data = null;
+		this.label = null;
 		this.children.forEach((child)=>{
 			child.dispose();
 		});
