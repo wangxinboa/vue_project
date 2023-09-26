@@ -26,6 +26,7 @@
       document.addEventListener('contextmenu', this.preventDefault);
     },
     destroyed(){
+      document.removeEventListener('contextmenu', this.preventDefault);
     }
   }
 </script>

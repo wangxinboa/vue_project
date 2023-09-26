@@ -28,6 +28,10 @@ const routes = [
 		path: paths.astGraph,		//	ast 节点规范关系图
 		component: () => import('../test/ast_graph/ast_graph.vue'),
 	},
+	{
+		path: paths.codeAnalyzer,		//	代码解析工具
+		component: () => import('../views/pages/code_analyzer/code_analyzer.vue'),
+	},
 
 	// 基本通过，可以对外进行展示
 	{
@@ -35,16 +39,12 @@ const routes = [
 		component: () => import('../views/pages/index.vue'),
 	},
 	{
-		path: paths.mathtexToImage,			//	图片格式的公式
+		path: paths.mathtexToImage,	//	图片格式的公式
 		component: () => import('../views/pages/tools/mathtex_to_image/mathtex_to_image.vue'),
 	},
 	{
 		path: paths.imageToBase64,	//	图片转 base64
 		component: () => import('../views/pages/tools/image_to_base64/image_to_base64.vue'),
-	},
-	{
-		path: paths.codeAnalyzer,		//	代码解析工具
-		component: () => import('../views/pages/code_analyzer/code_analyzer.vue'),
 	},
 ]
 

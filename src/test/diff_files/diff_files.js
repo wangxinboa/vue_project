@@ -14,7 +14,7 @@ export default function diffFiles(){
 	      minimap: {
 	        enabled: false // 是否启用预览图
 	      }, // 预览图设置
-	      readOnly: true, // 是否只读
+	      // readOnly: true, // 是否只读
 	      theme: "vs-dark",
 	      //enableSplitViewResizing: false,
 	      renderSideBySide: true,

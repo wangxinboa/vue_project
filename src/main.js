@@ -10,8 +10,8 @@ import ComponentTree from '@components/tree/tree.vue';
 
 import './assets/iconfont/iconfont.css';
 
-import './css/default_css.less';
-import './css/icon_button.less';
+import './views/css/default_css.less';
+import './views/css/icon_button.less';
 
 
 Vue.config.productionTip = false;

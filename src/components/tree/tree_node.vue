@@ -40,7 +40,7 @@
 			},
 		},
 		watch: {
-			nodeData(oldVal, newVal){
+			nodeData(newVal, oldVal){
 				this.children = this.getChildren(this.nodeData, this.keyName)
 				this.isLeaf = this.getIsLeaf(this.children)
 			}
