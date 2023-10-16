@@ -16,10 +16,10 @@ body{
   position: relative;
   font-size: 0.2rem;
 }
-#app{
-  overflow: auto; /*配合mac滚动禁止跳页操作*/
-  touch-action: none; /*静止浏览器滑动页面前进后退*/
-}
+/*#app{
+  overflow: auto;     /*配合mac滚动禁止跳页操作*\/
+  touch-action: none; /*静止浏览器滑动页面前进后退*\/
+}*/
 div, svg, pre, textarea, input, iframe, img, p, canvas,
 h1, h2, h3, h4, h5, h6, i, ul, li, select, option{
   display: block;
@@ -34,6 +34,10 @@ h1, h2, h3, h4, h5, h6, i, ul, li, select, option{
 
 ul{
   list-style: none;
+}
+
+canvas {
+  touch-action: none; /*用于移动端 canvas 事件与页面后退的问题*/
 }
 
 /*css 级通用样式*/
