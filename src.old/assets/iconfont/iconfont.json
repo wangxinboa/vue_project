@@ -6,6 +6,55 @@
   "description": "https://github.com/officialBusiness/vue_project",
   "glyphs": [
     {
+      "icon_id": "7982850",
+      "name": "解析",
+      "font_class": "jiexi",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "3590953",
+      "name": "清除数据库",
+      "font_class": "clear",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "566776",
+      "name": "说明",
+      "font_class": "shuoming",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "12460335",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "5875579",
+      "name": "select",
+      "font_class": "select",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "15214514",
+      "name": "css",
+      "font_class": "css",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "8039223",
+      "name": "图片",
+      "font_class": "tupian1",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
       "icon_id": "4862242",
       "name": "关闭",
       "font_class": "guanbi",

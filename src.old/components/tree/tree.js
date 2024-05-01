@@ -1,30 +1,28 @@
 
-const trees = {};
-class Tree{
-	getSelectedNode(){
-		return this.selectedNode;
-	}
-	setSelectedNode(node){
-		this.selectedNode = node;
-	}
-	setAccordion(accordion){
-		if( typeof accordion === 'boolean' ){
-			this.isAccordion = accordion;
+
+export default class TreeController{
+	// constructor(treeData){
+	// }
+
+	getChildren(node, parentMsg){
+		if( typeof this.children === 'string' ){
+			return node[this.children];
+		}else if( typeof this.children === 'function' ){
+			return this.children(node, parentMsg);
 		}
-		return this;
 	}
-	getAccordion(){
-		return this.isAccordion;
-	}
-}
 
-export default function createTree(id){
-	if( trees[id] ){
-		return trees[id];
+	getLabel(node, parentMsg){
+		if( typeof this.label === 'string' ){
+			return node[this.label];
+		}else if( typeof this.label === 'function' ){
+			return this.label(node, parentMsg);
+		}
 	}
-	return trees[id] = new Tree();
-}
 
-export function getTree(id){
-	return trees[id];
+	selectNode(node){
+		this.treeComponent.selectNode(node);
+	}
+
+
 }

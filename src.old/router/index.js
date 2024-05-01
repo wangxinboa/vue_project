@@ -1,63 +1,56 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import getRoutes from './get_routes.js'
 
 Vue.use(VueRouter);
 
+export const paths = {
+	index: '/index',
+	mathtexToImage: '/tools/mathtex_to_image',
+	imageToBase64: '/tools/image_to_base64',
+	codeAnalyzer: '/code_analyzer',
+
+	learnAstSpec: '/test/learn_ast_spec',
+	astGraph: '/test/ast_graph',
+	diffFiles: '/test/diff_files',
+	readGltf: '/test/read_gltf'
+}
+
 const routes = [
-
-	// 组件案例
+	// 测试中
 	{
-		path: '/components',
-		component: () => import('../components/components.vue'),
-		children: getRoutes([
-			// 自己写的组件
-			{
-				component: (path)=> ()=> import(`../components/${path}/example.vue`),
-				paths: ['scrollbar', 'context_menu', 'tree', 'message', 'side']
-			},
-			// element-ui 的组件
-			{
-				component: (path)=> ()=> import(`../components/${path}/index.vue`),
-				paths: ['element-ui.copy/color-picker', 'element-ui.copy/tree']
-			}
-		])
+		path: paths.diffFiles,		//	代码文件对比
+		component: () => import('../test/diff_files/diff_files.vue'),
 	},
-
+	{
+		path: paths.learnAstSpec,		//	ast 规范学习
+		component: () => import('../test/learn_ast_spec/learn_ast_spec.vue'),
+	},
+	{
+		path: paths.astGraph,		//	ast 节点规范关系图
+		component: () => import('../test/ast_graph/ast_graph.vue'),
+	},
+	{
+		path: paths.codeAnalyzer,		//	代码解析工具
+		component: () => import('../views/pages/code_analyzer/code_analyzer.vue'),
+	},
+	{
+		path: paths.readGltf,				// 读取 gltf 模型文件
+		component: () => import('../test/read_gltf/read_gltf.vue'),
+	},
 
 	// 基本通过，可以对外进行展示
 	{
-		path: '/show_myself',
-		component: () => import('../views/show_myself/show_myself.vue'),
+		path: paths.index,
+		component: () => import('../views/pages/index.vue'),
 	},
 	{
-		path: '/tex_to_image',//	图片格式的公式
-		component: () => import('../tools/mathjax/tex_to_image.vue'),
+		path: paths.mathtexToImage,	//	图片格式的公式
+		component: () => import('../views/pages/tools/mathtex_to_image/mathtex_to_image.vue'),
 	},
 	{
-		path: '/image_to_base64',//	展示图片 base64
-		component: () => import('../tools/image/image_to_base64.vue'),
+		path: paths.imageToBase64,	//	图片转 base64
+		component: () => import('../views/pages/tools/image_to_base64/image_to_base64.vue'),
 	},
-	{
-		path: '/glsl_to_js',// jlsl文件转化为js文件
-		component: () => import('../tools/deal_files/glsl_to_js.vue'),
-	},
-	{
-		path: '/learn_ast_node',//	学习 ast node 信息
-		component: () => import('../views/learn_ast_node/learn_ast_node.vue'),
-	},
-	{
-		path: '/paper',//	论文学习
-		component: () => import('../views/paper/paper.vue'),
-	},
-	{
-		path: '/code_document',// 	代码文档
-		component: () => import('../views/code_document/code_document.vue'),
-	},
-	{
-		path: '/learn_d3',//	d3 案例
-		component: () => import('../views/learn_d3/learn_d3.vue')
-	}
 ]
 
 const router = new VueRouter({
@@ -68,7 +61,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next)=>{
 	if( to.fullPath === '/' ){
-		next('/show_myself');
+		next(paths.index);
 	}else{
 		next();
 	}

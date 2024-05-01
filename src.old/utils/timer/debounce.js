@@ -1,4 +1,4 @@
-import getNow from './basic/now.js';
+import getNow from './now.js';
 /**
  * underscore 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行
  *
@@ -28,7 +28,6 @@ export default function debounce(func, wait) {
 		args = arguments;
 		// 设置最近一次函数触发的时间戳
 		timestamp = getNow();
-		// 如果定时器不存在且立即执行函数
 		// 如果定时器不存在就创建一个
 		if (!timeout) {
 			timeout = setTimeout(run, wait);
