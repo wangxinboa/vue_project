@@ -19,7 +19,6 @@ export default function debounce(func, wait) {
 			// 否则的话就是时间到了执行回调函数
 			result = func.apply(context, args);
 			timeout = context = args = null;
-			timeout = null;
 		}
 	};
  

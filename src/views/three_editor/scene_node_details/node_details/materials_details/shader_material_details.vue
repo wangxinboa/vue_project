@@ -31,7 +31,7 @@
 				<v-details_item v-else
 					:title="key">
 					<div class="warning"
-						v-on:mousedown="consoleUniform(uniform)">不知道的数据类型 {{ uniform?.value?.type }}</div>
+						v-on:mousedown="consoleUniform(uniform)">待完善可视化的数据类型 {{ uniform?.value?.type }}</div>
 				</v-details_item>
 			</div>
 		</v-details_panel>

@@ -107,18 +107,20 @@
 
 <style lang="less">
 	.component-tree{
-		width: fit-content;
 		min-width: 100%;
 		max-width: 100%;
-		height: fit-content;
 		min-height: 100%;
 		max-height: 100%;
 		overflow: auto;
 		.component-tree-node{
+			width: fit-content;
+			height: fit-content;
+			min-width: 100%;
 			>.tree-node-content{
 				display: flex;
 				align-items: center;
 				padding: 0 0.1rem 0 0;
+				height: 0.26rem;
 				line-height: 0.26rem;
 				font-size: 0.14rem;
 				color: #ffffff;
@@ -126,6 +128,7 @@
 				overflow: hidden;
 				>.expand{
 					width: 0.18rem;
+					min-width: 0.18rem;
 					height: 0.18rem;
 					line-height: 0.18rem;
 					text-align: center;

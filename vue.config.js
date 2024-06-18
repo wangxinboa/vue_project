@@ -10,7 +10,7 @@ module.exports = {
 				'@components': path.resolve(__dirname, 'src/components'),
 				'@utils': path.resolve(__dirname, 'src/utils'),
 				'@libs.js': path.resolve(__dirname, 'src/libs/libs.js'),
-
+				'three': path.resolve(__dirname, 'src/libs/three/build/three.module.js'),
 				// 第三方框架
 				// 'jszip': path.resolve(__dirname, 'src/third_party/jszip/jszip.js'),
 				// '@babel/parser': path.resolve(__dirname, 'src/third_party/@babel/parser.js'),

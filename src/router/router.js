@@ -18,6 +18,10 @@ const routes = [
 	{
 		path: '/three_editor',
 		component: () => import('../views/three_editor/three_editor.vue'),
+	},
+	{
+		path: '/code_analysis',
+		component: () => import('../views/code_analysis/code_analysis.vue'),
 	}
 ];
 

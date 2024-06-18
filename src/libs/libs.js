@@ -1,2 +1,4 @@
-export * as THREE from './three/build/three.module.min.js';
 
+export { OrbitControls } from './three/examples/jsm/controls/OrbitControls.js';
+
+export { GLTFLoader } from './three/examples/jsm/loaders/GLTFLoader.js';

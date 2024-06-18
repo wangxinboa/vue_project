@@ -44,6 +44,7 @@
 		watch: {
 			node(newVal, oldVal){
 				console.log('newVal:', newVal);
+				window.node = newVal;
 			}
 		}
 

@@ -6,6 +6,8 @@ document.body.appendChild( stats.domElement );
 
 console.log('gamemcu su7 assets index.js');
 
+window.special = {};
+
 var _L = Object.defineProperty;
 var yL = (t,n,r)=>n in t ? _L(t, n, {
     enumerable: !0,
@@ -43278,8 +43280,6 @@ void main() {
             }
             Qn();
             window.renderer = this;
-            window.renderer.properties = ei;
-
 
             const Fn = new JP(O,De);
             this.xr = Fn,
@@ -60351,7 +60351,7 @@ void main() {
             this.autoRenderToScreen = !0,
             this.setRenderer(p);
 
-            window.effectComposer = this;
+            window.special.effectComposer = this;
         }
         get multisampling() {
             return this.inputBuffer.samples || 0

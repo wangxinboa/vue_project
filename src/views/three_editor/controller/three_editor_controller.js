@@ -1,3 +1,6 @@
+import * as THREE from 'three';
+
+import { OrbitControls, GLTFLoader } from '@libs.js';
 
 export default class ThreeEditorController{
 
@@ -11,21 +14,84 @@ export default class ThreeEditorController{
 			scenes = null,
 			camera = null,
 
+			isRun = false,
 			// views
 			selectedNodeShowDetails = null;
 
+		function render(){
+
+			renderer.render( scenes[0], camera );
+
+			if( isRun ){
+
+				requestAnimationFrame(render)
+			}
+		}
 
 		return {
 			iframeSrc,
-			renderer,
-			scenes,
-			camera,
+			get renderer(){
+				return renderer;
+			},
+			set renderer( val ){
+				return renderer = val;
+			},
+			get scenes(){
+				return scenes;
+			},
+			set scenes( val ){
+				return scenes = val;
+			},
+			get camera(){
+				return camera;
+			},
+			set camera( val ){
+				return camera = val;
+			},
 
 			selectedNodeShowDetails,
 
 			initIframe( iframe ){
 
 				_iframe = iframe;
+			},
+
+			initCanvas( parameters = {} ){
+
+				const { canvas } = parameters;
+
+				this.renderer = new THREE.WebGLRenderer( parameters );
+				this.scenes = [new THREE.Scene()];
+				this.camera = new THREE.PerspectiveCamera( 75, canvas.clientWidth / canvas.clientHeight, 1, 1000 );
+
+				const ambient = new THREE.AmbientLight( 0xffffff );
+				this.scenes[0].add( ambient );
+
+				const orbitControls = new OrbitControls(camera, renderer.domElement);
+
+				isRun = true;
+				render();
+				// this.orbitControls = new OrbitControls(this.camera, this.renderer.domElement);
+			},
+
+
+
+			loadGLTFFile( file ){
+				console.log('loadGLTFFile');
+				console.log('file:', file);
+
+				const url = URL.createObjectURL(file);
+
+				new GLTFLoader().load(url, (gltf)=>{
+
+						console.log('gltf:', gltf);
+
+						this.scenes[0].add( gltf.scene );
+
+						console.log('this.scenes:', this.scenes);
+
+						URL.revokeObjectURL( url );
+				});
 			},
 
 			get stopRender(){
@@ -39,24 +105,25 @@ export default class ThreeEditorController{
 
 			refreshScenes(){
 
-				const
-					{ effectComposer, scene, camera, renderer } = _iframe,
-					scenes = [];
+				if( _iframe ){
 
+					const
+						{ special, scene, camera, renderer } = _iframe,
+						scenes = [];
 
-				window.effectComposer = effectComposer;
+						window.special = special;
 
-				// if( effectComposer ){
-				// 	scenes.push( effectComposer );
-				// }
+					if( scene ){
+						scenes.push( scene );
+					}
 
-				if( scene ){
-					scenes.push( scene );
+					this.renderer = renderer;
+					this.scenes = scenes;
+					this.camera = camera;
+				}else {
+
+					this.scenes = [this.scenes[0]]
 				}
-
-				this.renderer = renderer;
-				this.scenes = scenes;
-				this.camera = camera;
 			},
 
 			intersectScene(e){

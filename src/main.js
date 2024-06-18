@@ -6,6 +6,7 @@ import store from './store/store.js';
 import ComponentTextInput from '@components/text_input/text_input.vue';
 import ComponentTree from '@components/tree/tree.vue';
 
+import '@utils/window_key_event.js';
 
 import './default_css.css';
 import './assets/iconfont/iconfont.css';

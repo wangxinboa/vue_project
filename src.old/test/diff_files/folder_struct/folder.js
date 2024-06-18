@@ -80,7 +80,7 @@ export class File{
 	}
 }
 
-export function getFileTreeByFolder(files){
+export function getFileTreeByFolder( files ){
 
 	// 将 files 信息转化为 tree
 	let	filesTree = null,

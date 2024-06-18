@@ -16,6 +16,7 @@
 			</div>
 			<div class="scene_content">
 				<v-scene_iframe />
+				<!-- <v-scene_model /> -->
 				<!-- <v-scene_assets /> -->
 			</div>
 			<div class="scene_node_details">
@@ -27,11 +28,12 @@
 </template>
 
 <script>
-	import WindowKeyEvent, { WindowKey } from './window_key_event.js';
+	import WindowKeyEvent, { WindowKey } from '@utils/window_key_event.js';
 	import ThreeEditorController from './controller/three_editor_controller.js';
 
 	import SceneNodes from './scene_nodes.vue';
 	import SceneIframe from './scene_iframe.vue';
+	import SceneModel from './scene_model.vue';
 	import SceneAssets from './scene_assets.vue';
 	import SceneNodeDetails from './scene_node_details/scene_node_details.vue';
 
@@ -45,22 +47,23 @@
 		data(){
 			return {
 				threeEditorController: new ThreeEditorController(),
-				windowKeyEvent: new WindowKeyEvent(),
+				windowKeyEventOperations: WindowKeyEvent.addOperations('threeEditor'),
 			}
 		},
 		components: {
 			'v-scene_nodes': SceneNodes,
 			'v-scene_assets': SceneAssets,
 			'v-scene_iframe': SceneIframe,
+			'v-scene_model': SceneModel,
 			'v-scene_node_details': SceneNodeDetails,
 
 		},
 		mounted(){
-			this.windowKeyEvent.addEvent( WindowKey.Space, ()=>{
 
+			this.windowKeyEventOperations.addOperation( WindowKey.Space, ()=>{
+				// console.log('Space');
 				this.threeEditorController.stopRender = !this.threeEditorController.stopRender;
 			} );
-			window.threeEditorController = this.threeEditorController;
 		},
 		beforeDestroy(){
 			console.log('beforeDestroy')

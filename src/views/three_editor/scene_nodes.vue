@@ -27,11 +27,11 @@
 							v-if="node.isObject3D"
 							v-on:mousedown.stop>
 
-							<div :class="[
+							<!-- <div :class="[
 								'iconfont',
 								'icon-download'
 							]"
-							v-on:mousedown="handleDownLoadNodeJson(node)"></div>
+							v-on:mousedown="handleDownLoadNodeJson(node)"></div> -->
 
 							<div :class="[
 								'iconfont',
@@ -95,6 +95,7 @@
 			padding: 0 0.08rem 0 0.08rem;
 			width: 100%;
 			height: 0.32rem;
+			min-height: 0.32rem;
 			background-color: #202020;
 			>.scene_nodes_header_button{
 				display: flex;
@@ -120,14 +121,15 @@
 			height: 0;
 			flex: 1;
 			.scene_node{
-				position: relative;
+				display: flex;
+				height: 100%;
+				white-space: nowrap;
 				>.scene_node_buttons{
-					position: absolute;
-					bottom: 0;
-					right: 0;
 					display: flex;
 					align-items: center;
-					height: 0.26rem;
+					justify-content: flex-end;
+					width: 100%;
+					height: 100%;
 
 					>.iconfont{
 						margin-left: 0.08rem;
