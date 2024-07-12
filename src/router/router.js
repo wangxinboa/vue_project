@@ -20,8 +20,8 @@ const routes = [
 		component: () => import('../views/three_editor/three_editor.vue'),
 	},
 	{
-		path: '/code_analysis',
-		component: () => import('../views/code_analysis/code_analysis.vue'),
+		path: '/js_analysis',
+		component: () => import('../views/js_analysis/js_analysis.vue'),
 	}
 ];
 

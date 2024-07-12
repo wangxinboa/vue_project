@@ -9,12 +9,8 @@ module.exports = {
 				'@': path.resolve(__dirname, 'src'),
 				'@components': path.resolve(__dirname, 'src/components'),
 				'@utils': path.resolve(__dirname, 'src/utils'),
-				'@libs.js': path.resolve(__dirname, 'src/libs/libs.js'),
-				'three': path.resolve(__dirname, 'src/libs/three/build/three.module.js'),
 				// 第三方框架
-				// 'jszip': path.resolve(__dirname, 'src/third_party/jszip/jszip.js'),
-				// '@babel/parser': path.resolve(__dirname, 'src/third_party/@babel/parser.js'),
-				// 'd3': path.resolve(__dirname, 'src/third_party/d3/d3.7.8.5.js'),
+				'@third_party': path.resolve(__dirname, 'src/third_party'),
 			}
 		},
 		plugins: [
@@ -24,8 +20,8 @@ module.exports = {
 	pages: {
 		iframe: {
 			entry: 'src/iframe.js',
-			template: 'public/iframe/index.html',
-			filename: 'iframe/iframe.html',
+			template: 'public/su7/index.html',
+			filename: 'su7/iframe.html',
 		},
 		index: {
 			entry: 'src/main.js',

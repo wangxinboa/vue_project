@@ -1,13 +1,15 @@
-import * as THREE from 'three';
+import * as THREE from '@third_party/three.js/build/three.module.js';
 
-import { OrbitControls, GLTFLoader } from '@libs.js';
+import { OrbitControls } from '@third_party/three.js/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from '@third_party/three.js/examples/jsm/loaders/GLTFLoader.js';
+
 
 export default class ThreeEditorController{
 
 	constructor(){
 
 		let
-			iframeSrc = 'http://localhost:8080/iframe/',
+			iframeSrc = 'http://localhost:8080/su7/',
 
 			_iframe = null,
 			renderer = null,
